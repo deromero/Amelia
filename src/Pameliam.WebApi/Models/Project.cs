@@ -1,3 +1,0 @@
-namespace Pameliam.Models{
-    
-}

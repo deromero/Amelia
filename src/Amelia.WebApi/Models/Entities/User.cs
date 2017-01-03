@@ -1,15 +1,16 @@
 using System;
 
-namespace Pameliam.Models
+namespace Amelia.WebApi.Models.Entities
 {
-    public class User
+    public class User : IEntityBase
     {
-        public string Login { get; set; }
-        public string HashedPassword { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Mail { get; set; }
-        public bool MailNotification { get; set; }
+        public string Email { get; set; }
+        public bool EmailNotification { get; set; }
         public bool IsAdmin { get; set; }
         public int Status { get; set; }
         public string Language { get; set; }
