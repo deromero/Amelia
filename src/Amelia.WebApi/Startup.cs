@@ -13,7 +13,9 @@ using Amelia.WebApi.ViewModels.Mappings;
 using Amelia.WebApi.Core;
 using Amelia.Data.Repositories;
 using Amelia.WebApi.Data;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
+[assembly: UserSecretsId("aspnet-TestApp-ce345b64-19cf-4972-b34f-d16f2e7976ed")]
 namespace Amelia.WebApi
 {
     public class Startup
@@ -30,7 +32,7 @@ namespace Amelia.WebApi
 
             if (env.IsDevelopment())
             {
-                builder.AddUserSecrets();
+                builder.AddUserSecrets<Startup>();
             }
 
             builder.AddEnvironmentVariables();
@@ -52,8 +54,8 @@ namespace Amelia.WebApi
             //Add Repositories
             AddRepositories(services);
 
-
             AutoMapperConfiguration.Configure();
+
             // Enable Cors
             services.AddCors();
 

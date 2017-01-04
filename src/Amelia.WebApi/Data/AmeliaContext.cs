@@ -7,6 +7,10 @@ namespace Amelia.WebApi.Data
 {
     public class AmeliaContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
+
+        public AmeliaContext(DbContextOptions options) : base(options) { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var relationiship in modelBuilder.Model.GetEntityTypes()
