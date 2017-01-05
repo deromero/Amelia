@@ -56,15 +56,47 @@ namespace Amelia.WebApi.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult Get(int id)
         {
-            User user = _userRepository.GetSingle(u=>u.Id == id);
+            User user = _userRepository.GetSingle(u => u.Id == id);
 
-            if(user!=null){
-                var userVm = Mapper.Map<User,UserViewModel>(user);
+            if (user != null)
+            {
+                var userVm = Mapper.Map<User, UserViewModel>(user);
                 return new OkObjectResult(userVm);
             }
-            else{
+            else
+            {
                 return NotFound();
             }
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] UserViewModel user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var newUser = new User
+            {
+                Username = user.Username,
+                Password = user.Password,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            _userRepository.Add(newUser);
+            _userRepository.Commit();
+
+            user = Mapper.Map<User, UserViewModel>(newUser);
+
+            CreatedAtRouteResult result = CreatedAtRoute("GetUser", new
+            {
+                controller = "Users",
+                id = user.Id
+            }, user);
+            return result;
         }
 
     }

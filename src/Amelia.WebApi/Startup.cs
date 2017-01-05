@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
@@ -7,23 +8,28 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Serialization;
 using Amelia.WebApi.Models.Contracts.Repositories;
 using Amelia.WebApi.ViewModels.Mappings;
 using Amelia.WebApi.Core;
 using Amelia.Data.Repositories;
 using Amelia.WebApi.Data;
-using Microsoft.Extensions.Configuration.UserSecrets;
+using Amelia.WebApi.Models.Auth;
+using Microsoft.IdentityModel.Tokens;
 
 [assembly: UserSecretsId("aspnet-TestApp-ce345b64-19cf-4972-b34f-d16f2e7976ed")]
 namespace Amelia.WebApi
 {
     public class Startup
     {
+        //TODO: This SecretKey must be retrieved from Environment Settings.
+        private const string SecretKey = "thisisthesecretkeyfordevelopmentforameliapm";
+        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey));
+
         public Startup(IHostingEnvironment env)
         {
-
-
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -44,7 +50,6 @@ namespace Amelia.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddDbContext<AmeliaContext>(options =>
             {
                 options.UseSqlServer(Configuration["Data:AmeliaConnection:ConnectionString"],
@@ -53,14 +58,28 @@ namespace Amelia.WebApi
 
             //Add Repositories
             AddRepositories(services);
-
             AutoMapperConfiguration.Configure();
 
             // Enable Cors
             services.AddCors();
 
             // Add framework services.
-            services.AddMvc()
+            services.AddOptions();
+
+            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            services.Configure<JwtIssuerOptions>(options =>
+            {
+                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
+                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
+            });
+
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+            })
             .AddJsonOptions(options =>
             {
                 // Force camel case to JSON
