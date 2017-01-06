@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Amelia.Domain.Contracts.Services;
 using Amelia.Domain.Models;
-using Amelia.WebApp.Core;
+using Amelia.WebApp.Models.Extensions;
 using Amelia.WebApp.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;

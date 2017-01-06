@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Http;
 
-namespace Amelia.WebApp.Core
-{
-    public static class Extensions
-    {
-        public static void AddPagination(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems, int totalPages)
+namespace Amelia.WebApp.Models.Extensions{
+  
+  public static class HttpResponseExtensions{
+    
+       public static void AddPagination(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems, int totalPages)
         {
             var paginationHeader = new PaginationHeader(currentPage, itemsPerPage, totalItems, totalPages);
 
@@ -13,11 +13,12 @@ namespace Amelia.WebApp.Core
             // CORS
             response.Headers.Add("access-control-expose-headers", "Pagination");
         }
-        public static void AddApplicationError(this HttpResponse response, string message)
+  
+      public static void AddApplicationError(this HttpResponse response, string message)
         {
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("access-control-expose-headers", "Application-Error");
         }
-
-    }
+    
+  }
 }

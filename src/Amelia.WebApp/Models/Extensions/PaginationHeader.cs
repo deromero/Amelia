@@ -1,4 +1,4 @@
-namespace Amelia.WebApp.Core
+namespace Amelia.WebApp.Models.Extensions
 {
     public class PaginationHeader
     {

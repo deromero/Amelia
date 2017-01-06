@@ -1,2 +1,2 @@
 # amelia
-Amelia PM. Project Management app with Asp.net core WebApi
+Amelia PM. Project Management app with Asp.net core WebApi.
