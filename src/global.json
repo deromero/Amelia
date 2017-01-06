@@ -4,6 +4,6 @@
         "Amelia.Domain",
         "Amelia.Services",
         "Amelia.Web.Core",
-        "Amelia.WebApi"
+        "Amelia.WebApp"
     ]
 }

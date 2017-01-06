@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/Amelia.WebApi/project.json"
+                "${workspaceRoot}/Amelia.WebApp/project.json"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
