@@ -1,9 +1,9 @@
 using System.Linq;
+using Amelia.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Amelia.WebApi.Models.Entities;
 
-namespace Amelia.WebApi.Data
+namespace Amelia.Data.Contexts
 {
     public class AmeliaContext : DbContext
     {

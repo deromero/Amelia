@@ -1,6 +1,6 @@
 using System;
 
-namespace Amelia.WebApi.Models.Entities
+namespace Amelia.Domain.Models
 {
     public class User : IEntityBase
     {
@@ -20,6 +20,3 @@ namespace Amelia.WebApi.Models.Entities
         public int AuthSourceId { get; set; }
     }
 }
-
-
-

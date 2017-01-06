@@ -1,4 +1,4 @@
-namespace Amelia.WebApi.Models
+namespace Amelia.Domain
 {
     public interface IEntityBase
     {

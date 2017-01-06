@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Amelia.Domain.Contracts.Services;
+using Amelia.Domain.Models;
 using Amelia.WebApi.Core;
-using Amelia.WebApi.Models.Contracts.Repositories;
-using Amelia.WebApi.Models.Entities;
 using Amelia.WebApi.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +13,14 @@ namespace Amelia.WebApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        private IUserRepository _userRepository;
+        private IUserService _userService;
 
         int _page = 1;
         int _pageSize = 10;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserService userService)
         {
-            _userRepository = userRepository;
+            _userService = userService;
         }
 
         public IActionResult Get()
@@ -36,10 +36,10 @@ namespace Amelia.WebApi.Controllers
             int currentPage = _page;
             int currentPageSize = _pageSize;
 
-            var totalUsers = _userRepository.Count();
+            var totalUsers = _userService.TotalCount;
             var totalPages = (int)Math.Ceiling((double)totalUsers / _pageSize);
 
-            IEnumerable<User> users = _userRepository
+            IEnumerable<User> users = _userService
                     .GetAll()
                     .OrderBy(u => u.Id)
                     .Skip((currentPage - 1) * currentPageSize)
@@ -56,7 +56,7 @@ namespace Amelia.WebApi.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult Get(int id)
         {
-            User user = _userRepository.GetSingle(u => u.Id == id);
+            User user = _userService.FindById(id);
 
             if (user != null)
             {
@@ -86,8 +86,7 @@ namespace Amelia.WebApi.Controllers
                 Email = user.Email
             };
 
-            _userRepository.Add(newUser);
-            _userRepository.Commit();
+            _userService.Create(newUser);
 
             user = Mapper.Map<User, UserViewModel>(newUser);
 

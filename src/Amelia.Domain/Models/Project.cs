@@ -1,6 +1,6 @@
 using System;
 
-namespace Amelia.WebApi.Models.Entities
+namespace Amelia.Domain.Models
 {
     public class Project : IEntityBase
     {

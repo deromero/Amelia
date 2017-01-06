@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Amelia.WebApi.Models.Contracts.Repositories
+namespace Amelia.Domain.Contracts.Repositories
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {

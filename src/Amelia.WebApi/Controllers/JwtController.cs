@@ -3,8 +3,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using Amelia.Domain.Contracts.Services;
 using Amelia.WebApi.Models.Auth;
-using Amelia.WebApi.Models.Contracts.Repositories;
 using Amelia.WebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,11 +20,11 @@ namespace Amelia.WebApi.Controllers
         private readonly JwtIssuerOptions _jwtOptions;
         private readonly ILogger _logger;
         private readonly JsonSerializerSettings _serializerSettings;
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userService;
 
-        public JwtController(IOptions<JwtIssuerOptions> jwtOptions, ILoggerFactory loggerFactory, IUserRepository userRepository)
+        public JwtController(IOptions<JwtIssuerOptions> jwtOptions, ILoggerFactory loggerFactory, IUserService userService)
         {
-            _userRepository = userRepository;
+            _userService = userService;
             _jwtOptions = jwtOptions.Value;
             ThrowIfInvalidOptions(_jwtOptions);
 
@@ -77,7 +77,7 @@ namespace Amelia.WebApi.Controllers
         private Task<ClaimsIdentity> GetClaimsIdentity(LoginViewModel loginViewModel)
         {
             var hashedPassword = Helper.GetHash(loginViewModel.Password);
-            var user = _userRepository.Find(loginViewModel.Username, hashedPassword);
+            var user = _userService.Find(loginViewModel.Username, hashedPassword);
             if (user != null)
             {
                 var identity = new GenericIdentity(user.Username, "Token");

@@ -11,13 +11,15 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Serialization;
-using Amelia.WebApi.Models.Contracts.Repositories;
 using Amelia.WebApi.ViewModels.Mappings;
 using Amelia.WebApi.Core;
 using Amelia.Data.Repositories;
-using Amelia.WebApi.Data;
 using Amelia.WebApi.Models.Auth;
 using Microsoft.IdentityModel.Tokens;
+using Amelia.Data.Contexts;
+using Amelia.Domain.Contracts.Repositories;
+using Amelia.Services;
+using Amelia.Domain.Contracts.Services;
 
 [assembly: UserSecretsId("aspnet-TestApp-ce345b64-19cf-4972-b34f-d16f2e7976ed")]
 namespace Amelia.WebApi
@@ -58,6 +60,8 @@ namespace Amelia.WebApi
 
             //Add Repositories
             AddRepositories(services);
+            AddServices(services);
+
             AutoMapperConfiguration.Configure();
 
             // Enable Cors
@@ -122,7 +126,11 @@ namespace Amelia.WebApi
         private void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+
         }
 
+        private void AddServices(IServiceCollection services){
+            services.AddScoped<IUserService, UserService>();
+        }
     }
 }

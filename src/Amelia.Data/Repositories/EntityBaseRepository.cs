@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Amelia.Data.Contexts;
+using Amelia.Domain;
+using Amelia.Domain.Contracts.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Amelia.WebApi.Models.Contracts.Repositories;
-using Amelia.WebApi.Models;
 
-namespace Amelia.WebApi.Data
+namespace Amelia.Data.Repositories
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T>
         where T : class, IEntityBase, new()

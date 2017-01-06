@@ -1,5 +1,4 @@
-using System;
-using Amelia.WebApi.Models.Entities;
+using Amelia.Domain.Models;
 using AutoMapper;
 
 namespace Amelia.WebApi.ViewModels.Mappings

@@ -1,0 +1,9 @@
+{
+    "projects":[
+        "Amelia.Data",
+        "Amelia.Domain",
+        "Amelia.Services",
+        "Amelia.Web.Core",
+        "Amelia.WebApi"
+    ]
+}
