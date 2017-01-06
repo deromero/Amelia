@@ -81,8 +81,6 @@ namespace Amelia.WebApp.Controllers
             {
                 Username = user.Username,
                 Password = user.Password,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
                 Email = user.Email
             };
 

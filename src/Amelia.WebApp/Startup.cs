@@ -20,6 +20,12 @@ using Amelia.Data.Contexts;
 using Amelia.Domain.Contracts.Repositories;
 using Amelia.Services;
 using Amelia.Domain.Contracts.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Amelia.Data.Initializer;
+using System.Security.Claims;
+using Amelia.WebApp.Models.Services;
+using Amelia.WebApp.Models.Contracts;
 
 [assembly: UserSecretsId("aspnet-TestApp-ce345b64-19cf-4972-b34f-d16f2e7976ed")]
 namespace Amelia.WebApp
@@ -29,11 +35,15 @@ namespace Amelia.WebApp
         //TODO: This SecretKey must be retrieved from Environment Settings.
         private const string SecretKey = "thisisthesecretkeyfordevelopmentforameliapm";
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey));
-
+        private static string _applicationPath = string.Empty;
+        private static string _contentRootPath = string.Empty;
         public Startup(IHostingEnvironment env)
         {
+            _applicationPath = env.WebRootPath;
+            _contentRootPath = env.ContentRootPath;
+
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(_contentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
@@ -61,29 +71,24 @@ namespace Amelia.WebApp
             //Add Repositories
             AddRepositories(services);
             AddServices(services);
-
             AutoMapperConfiguration.Configure();
 
             // Enable Cors
             services.AddCors();
 
-            // Add framework services.
-            services.AddOptions();
-
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
-            services.Configure<JwtIssuerOptions>(options =>
+            AddAutenticationServices(services);
+            services.AddAuthentication();
+            services.AddAuthorization(options =>
             {
-                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
-                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
+                options.AddPolicy("AdminOnly", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Role, "Admin");
+                });
             });
 
-            services.AddMvc(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                                .RequireAuthenticatedUser()
-                                .Build();
-            })
+            // Add framework services.
+            services.AddOptions();
+            services.AddMvc()
             .AddJsonOptions(options =>
             {
                 // Force camel case to JSON
@@ -94,43 +99,77 @@ namespace Amelia.WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseStaticFiles();
+            app.UseFileServer();
+
+            var provider = new PhysicalFileProvider(
+                Path.Combine(_contentRootPath, "node_modules")
+            );
+            var _fileServerOptions = new FileServerOptions();
+            _fileServerOptions.RequestPath = "/node_modules";
+            _fileServerOptions.StaticFileOptions.FileProvider = provider;
+            _fileServerOptions.EnableDirectoryBrowsing = true;
+            app.UseFileServer(_fileServerOptions);
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
 
             app.UseCors(builder =>
-                builder.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod());
+                 builder.AllowAnyOrigin()
+                 .AllowAnyHeader()
+                 .AllowAnyMethod());
 
 
-            app.UseExceptionHandler(
-                          builder =>
-                          {
-                              builder.Run(
-                                async context =>
-                                {
-                                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                                    context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            app.UseMvc(routes =>
+ {
+     routes.MapRoute(
+         name: "default",
+         template: "{controller=Home}/{action=Index}/{id?}");
 
-                                    var error = context.Features.Get<IExceptionHandlerFeature>();
-                                    if (error != null)
-                                    {
-                                        context.Response.AddApplicationError(error.Error.Message);
-                                        await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
-                                    }
-                                });
-                          });
+                // Uncomment the following line to add a route for porting Web API 2 controllers.
+                //routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
+            });
 
-            app.UseMvc();
+            DbInitializer.Initialize(app.ApplicationServices);
         }
+
+        public static void Main(string[] args)
+        {
+           var config = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .AddEnvironmentVariables(prefix: "ASPNETCORE_")
+                .Build();
+
+            var host = new WebHostBuilder()
+                .UseConfiguration(config)
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
+
 
         private void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
         }
 
-        private void AddServices(IServiceCollection services){
+        private void AddServices(IServiceCollection services)
+        {
             services.AddScoped<IUserService, UserService>();
+        }
+
+        private void AddAutenticationServices(IServiceCollection services)
+        {
+            services.AddScoped<IMembershipService, MembershipService>();
+            services.AddScoped<IEncryptionService, EncryptionService>();
         }
     }
 }

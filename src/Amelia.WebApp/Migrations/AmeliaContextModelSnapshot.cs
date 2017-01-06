@@ -16,34 +16,64 @@ namespace Amelia.WebApp.Migrations
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Amelia.Domain.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("HomePage");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ParentId");
+
+                    b.Property<int>("ProjectCount");
+
+                    b.Property<DateTime>("UpdatedOn");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Amelia.Domain.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Amelia.Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AuthSourceId");
-
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(256);
 
-                    b.Property<bool>("EmailNotification");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(256);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasMaxLength(256);
 
-                    b.Property<bool>("IsAdmin");
-
-                    b.Property<string>("Language");
-
-                    b.Property<DateTime>("LastLoginOn");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("Password");
-
-                    b.Property<int>("Status");
-
-                    b.Property<DateTime>("UpdatedOn");
+                    b.Property<short>("Status");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -52,6 +82,35 @@ namespace Amelia.WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Amelia.Domain.Models.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("RoleId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles");
+                });
+
+            modelBuilder.Entity("Amelia.Domain.Models.UserRole", b =>
+                {
+                    b.HasOne("Amelia.Domain.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
+                    b.HasOne("Amelia.Domain.Models.User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId");
                 });
         }
     }

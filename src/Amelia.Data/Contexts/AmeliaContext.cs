@@ -8,6 +8,10 @@ namespace Amelia.Data.Contexts
     public class AmeliaContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
 
         public AmeliaContext(DbContextOptions options) : base(options) { }
 
@@ -20,18 +24,25 @@ namespace Amelia.Data.Contexts
             }
 
 
-            CreateModelUser(modelBuilder);
+            CreateModelUserAndRoles(modelBuilder);
 
         }
 
 
-        private void CreateModelUser(ModelBuilder modelBuilder)
+        private void CreateModelUserAndRoles(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<User>()
-                .Property(u => u.Username)
-                .HasMaxLength(100)
-                .IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Username).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Email).HasMaxLength(256).IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Password).HasMaxLength(256).IsRequired();
+            modelBuilder.Entity<User>().Property(u => u.Salt).HasMaxLength(256).IsRequired();
+
+            modelBuilder.Entity<Role>().ToTable("Roles");
+            modelBuilder.Entity<Role>().Property(r => r.Name).HasMaxLength(100).IsRequired();
+
+            modelBuilder.Entity<UserRole>().Property(ur => ur.UserId).IsRequired();
+            modelBuilder.Entity<UserRole>().Property(ur => ur.RoleId).IsRequired();
+
         }
     }
 }

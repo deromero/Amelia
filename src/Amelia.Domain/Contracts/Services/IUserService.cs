@@ -10,5 +10,8 @@ namespace Amelia.Domain.Contracts.Services
         IEnumerable<User> GetAll();
         User FindById(int id);
         void Create(User user);
+        User Find(string username);
+        IEnumerable<Role> GetUserRoles(string username);
+        void AddUserToRole(User user, int role);
     }
 }
