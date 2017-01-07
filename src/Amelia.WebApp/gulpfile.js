@@ -83,14 +83,18 @@ gulp.task('sass',function(done){
     return scssResult.pipe(gulp.dest(paths.scssOutput));
 });
 
+gulp.task('watch.scss',['sass'],function(){
+    return gulp.watch(paths.scssSource,['sass']);
+});
+
 gulp.task('watch.ts', ['compile-typescript'], function () {
     return gulp.watch('wwwroot/app/**/*.ts', ['compile-typescript']);
 });
  
-gulp.task('watch', ['watch.ts']);
+gulp.task('watch', ['watch.ts','watch.scss']);
  
 gulp.task('clean-lib', function () {
     return del([lib]);
 });
  
-gulp.task('build-spa', ['setup-vendors', 'compile-typescript']);
+gulp.task('build-spa', ['setup-vendors', 'compile-typescript', 'sass']);

@@ -11,6 +11,17 @@
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "build-spa",
+            "isBuildCommand": true,
+            "showOutput": "always"
+        },
+        {
+            "taskName": "watch",
+            "isBuildCommand": true,
+            "showOutput": "always",
+            "isWatching": true
         }
     ]
 }
