@@ -15,8 +15,8 @@ namespace Amelia.Services
 
 
         public UserService(
-            IUserRepository userRepository, 
-            IRoleRepository roleRepository, 
+            IUserRepository userRepository,
+            IRoleRepository roleRepository,
             IUserRoleRepository userRoleRepository)
         {
             _userRepository = userRepository;
@@ -64,24 +64,25 @@ namespace Amelia.Services
         public IEnumerable<Role> GetUserRoles(string username)
         {
             List<Role> _roles = null;
- 
+
             User _user = _userRepository.GetSingle(u => u.Username == username, u => u.UserRoles);
-            if(_user != null)
+            if (_user != null)
             {
                 _roles = new List<Role>();
                 foreach (var _userRole in _user.UserRoles)
                     _roles.Add(_roleRepository.GetSingle(_userRole.RoleId));
             }
- 
+
             return _roles;
         }
 
         public void AddUserToRole(User user, int roleId)
         {
             var role = _roleRepository.GetSingle(roleId);
-            if(role!=null) throw new Exception("Role doesn't exist");
+            if (role == null) throw new Exception("Role doesn't exist");
 
-            var userRole = new UserRole(){
+            var userRole = new UserRole()
+            {
                 RoleId = role.Id,
                 UserId = user.Id
             };

@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Amelia.WebApp.ViewModels.Validations
 {
-    public class UserViewModelValidator : AbstractValidator<UserViewModel>
+    public class UserViewModelValidator : AbstractValidator<RegistrationViewModel>
     {
         public UserViewModelValidator()
         {

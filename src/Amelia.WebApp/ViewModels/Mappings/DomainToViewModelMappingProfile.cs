@@ -12,7 +12,7 @@ namespace Amelia.WebApp.ViewModels.Mappings
 
         private void MapUserToUserViewModel()
         {
-            Mapper.CreateMap<User, UserViewModel>();
+            Mapper.CreateMap<User, RegistrationViewModel>();
         }
     }
 

@@ -1,5 +1,5 @@
 {
-    "name": "AMELIA.PM",
+    "name": "amelia.pm",
     "private": true,
     "dependencies": {
         "bootstrap": "3.3.6",

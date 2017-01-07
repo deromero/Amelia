@@ -40,8 +40,8 @@ namespace Amelia.WebApp.Models.Services
 
         public User CreateUser(string username, string email, string password, int[] roles)
         {
-            var user = _userService.Find(username);
-            if (user != null)
+            var existingUser = _userService.Find(username);
+            if (existingUser != null)
             {
                 throw new Exception("Username is already in use");
             }
@@ -62,11 +62,11 @@ namespace Amelia.WebApp.Models.Services
             if (roles != null || roles.Length >0)
             {
                 foreach(var role in roles){
-                    _userService.AddUserToRole(user, role);
+                    _userService.AddUserToRole(newUser, role);
                 }
             }
 
-            return user;
+            return newUser;
         }
 
 
@@ -74,6 +74,8 @@ namespace Amelia.WebApp.Models.Services
         {
             return _userService.FindById(userId);
         }
+
+
 
         private bool IsPasswordValid(User user, string password)
         {
@@ -89,5 +91,7 @@ namespace Amelia.WebApp.Models.Services
 
             return false;
         }
+
+       
     }
 }

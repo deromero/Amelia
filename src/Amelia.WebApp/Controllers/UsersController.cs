@@ -46,7 +46,7 @@ namespace Amelia.WebApp.Controllers
                     .Take(currentPageSize)
                     .ToList();
 
-            IEnumerable<UserViewModel> usersVm = Mapper.Map<IEnumerable<User>, IEnumerable<UserViewModel>>(users);
+            IEnumerable<RegistrationViewModel> usersVm = Mapper.Map<IEnumerable<User>, IEnumerable<RegistrationViewModel>>(users);
             Response.AddPagination(_page, _pageSize, totalUsers, totalPages);
 
             return new OkObjectResult(usersVm);
@@ -60,7 +60,7 @@ namespace Amelia.WebApp.Controllers
 
             if (user != null)
             {
-                var userVm = Mapper.Map<User, UserViewModel>(user);
+                var userVm = Mapper.Map<User, RegistrationViewModel>(user);
                 return new OkObjectResult(userVm);
             }
             else
@@ -70,7 +70,7 @@ namespace Amelia.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] UserViewModel user)
+        public IActionResult Create([FromBody] RegistrationViewModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Amelia.WebApp.Controllers
 
             _userService.Create(newUser);
 
-            user = Mapper.Map<User, UserViewModel>(newUser);
+            user = Mapper.Map<User, RegistrationViewModel>(newUser);
 
             CreatedAtRouteResult result = CreatedAtRoute("GetUser", new
             {

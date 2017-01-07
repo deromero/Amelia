@@ -27,10 +27,10 @@ namespace Amelia.Data.Initializer.Auth
             {
                 context.Users.Add(new User()
                 {
-                    Email = "admin@amelia-pm.com",
+                    Email = "amelia-app@romerodev.com",
                     Username = "admin",
-                    Password = "9wsmLgYM5Gu4zA/BSpxK2GIBEWzqMPKs8wl2WDBzH/4=",
-                    Salt = "GTtKxJA6xJuj3ifJtTXn9Q==",
+                    Password = "1xIo/zZ1UmMyX0CdxuokPqT/JDB/C7CjZta7ip/zTHg=",
+                    Salt = "GvaJSm+xPQbqpq++yX9QNQ==",
                     Status = (short)UserStatus.Online,
                     CreatedOn = DateTime.Now
                 });

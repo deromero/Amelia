@@ -16,6 +16,22 @@ namespace Amelia.WebApp.Migrations
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Amelia.Domain.Models.Error", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("Message");
+
+                    b.Property<string>("StackTrace");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Error");
+                });
+
             modelBuilder.Entity("Amelia.Domain.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -37,7 +53,7 @@ namespace Amelia.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Project");
                 });
 
             modelBuilder.Entity("Amelia.Domain.Models.Role", b =>
@@ -99,7 +115,7 @@ namespace Amelia.WebApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("Amelia.Domain.Models.UserRole", b =>

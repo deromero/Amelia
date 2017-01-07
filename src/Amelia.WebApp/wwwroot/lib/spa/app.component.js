@@ -40,7 +40,7 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'photogallery-app',
+            selector: 'amelia-app',
             templateUrl: './app/app.component.html'
         }), 
         __metadata('design:paramtypes', [membership_service_1.MembershipService, common_1.Location])

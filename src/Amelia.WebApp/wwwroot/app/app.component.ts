@@ -10,7 +10,7 @@ import { MembershipService } from './core/services/membership.service';
 import { User } from './core/domain/user';
 
 @Component({
-    selector: 'photogallery-app',
+    selector: 'amelia-app',
     templateUrl: './app/app.component.html'
 })
 export class AppComponent implements OnInit {

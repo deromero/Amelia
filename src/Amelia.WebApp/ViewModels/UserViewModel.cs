@@ -5,7 +5,7 @@ using Amelia.WebApp.ViewModels.Validations;
 
 namespace Amelia.WebApp.ViewModels
 {
-    public class UserViewModel : IValidatableObject
+    public class RegistrationViewModel : IValidatableObject
     {
         public int Id { get; set; }
         public string Username { get; set; }
