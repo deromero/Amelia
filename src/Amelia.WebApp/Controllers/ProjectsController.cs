@@ -16,15 +16,18 @@ namespace Amelia.WebApp.Controllers
     public class ProjectsController : Controller
     {
         private readonly IProjectService _projectService;
+        private readonly IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
         private readonly ILoggingService _loggingService;
 
         public ProjectsController(
                             IProjectService projectService,
+                            IUserService userService,
                             IAuthorizationService authorizacionService,
                             ILoggingService loggingService)
         {
             _projectService = projectService;
+            _userService = userService;
             _authorizationService = authorizacionService;
             _loggingService = loggingService;
         }
@@ -58,22 +61,73 @@ namespace Amelia.WebApp.Controllers
                         TotalPages = (int)Math.Ceiling((decimal)totalProjects / currentPageSize),
                         Items = projectViewModels
                     };
-                }else{
+                }
+                else
+                {
                     var _codeResult = new CodeResultStatus(401);
                     return new ObjectResult(_codeResult);
                 }
             }
             catch (System.Exception exception)
             {
-                _loggingService.Add(new Error()
-                {
-                    Message = exception.Message,
-                    StackTrace = exception.StackTrace,
-                    DateCreated = DateTime.Now
-                });
+                _loggingService.Add(Error.FromException(exception));
             }
 
             return new ObjectResult(pagedSet);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpGet("{id:int}")]
+        public IActionResult GetById(int id)
+        {
+            var project = _projectService.FindById(id);
+            var viewModel = Mapper.Map<Project, ProjectViewModel>(project);
+            return new ObjectResult(viewModel);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpGet("{slug:string}")]
+        public IActionResult GetBySlug(string slug)
+        {
+            var project = _projectService.Find(slug);
+            var viewModel = Mapper.Map<Project, ProjectViewModel>(project);
+            return new ObjectResult(viewModel);
+        }
+
+        [Route("create")]
+        [HttpPost]
+        public IActionResult Create([FromBody] NewProjectFormModel formModel)
+        {
+            var result = new ObjectResult(false);
+            GenericResult newProjectResult = null;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var project = new Project
+                    {
+                        Name = formModel.Name,
+                        Description = formModel.Description,
+                        ProjectType = formModel.ProjectType,
+                        IsPrivate = formModel.IsPrivate,
+                        Owner = _userService.Find(User.Identity.Name)
+                    };
+
+                    _projectService.Create(project);
+
+                    newProjectResult = GenericResult.Ok("creation suceeded");
+
+                }
+            }
+            catch (System.Exception exception)
+            {
+                newProjectResult = GenericResult.Failure(exception.Message);
+                _loggingService.Add(Error.FromException(exception));
+            }
+
+            result = new ObjectResult(newProjectResult);
+            return result;
         }
 
     }

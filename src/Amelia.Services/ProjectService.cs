@@ -19,5 +19,21 @@ namespace Amelia.Services
         {
             return _projectRepository.GetAll();
         }
+
+        public void Create(Project project)
+        {
+            _projectRepository.Add(project);
+            _projectRepository.Commit();
+        }
+
+        public Project FindById(int projectId)
+        {
+            return _projectRepository.GetSingle(projectId);
+        }
+
+        public Project Find(string projectSlug)
+        {
+            return _projectRepository.GetSingle(p => p.Slug == projectSlug);
+        }
     }
 }
