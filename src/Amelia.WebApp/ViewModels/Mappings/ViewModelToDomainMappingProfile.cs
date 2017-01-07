@@ -9,6 +9,12 @@ namespace Amelia.WebApp.ViewModels.Mappings
         {
             //TODO: Create Maps
             MapUserViewModelToUser();
+            MapProjectViewModelToProject();
+        }
+
+        private void MapProjectViewModelToProject()
+        {
+            Mapper.CreateMap<ProjectViewModel,Project>();
         }
 
         private void MapUserViewModelToUser()

@@ -16,6 +16,7 @@ namespace Amelia.WebApp.Models.DependencyInjection
         {
             services.AddScoped<ILoggingService, LoggingService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProjectService, ProjectService>();
         }
     }
 }

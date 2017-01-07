@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Amelia.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -31,9 +32,19 @@ namespace Amelia.Data.Contexts
 
 
             CreateModelUserAndRoles(modelBuilder);
-
+            CreateModelProjects(modelBuilder);
         }
 
+        private void CreateModelProjects(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>().ToTable("Projects")
+                .HasIndex(p=>p.Slug).IsUnique();
+
+            modelBuilder.Entity<Project>().Property(p=>p.Name).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<Project>().Property(p=>p.Slug).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<Project>().HasOne(p=>p.Owner);
+                
+        }
 
         private void CreateModelUserAndRoles(ModelBuilder modelBuilder)
         {

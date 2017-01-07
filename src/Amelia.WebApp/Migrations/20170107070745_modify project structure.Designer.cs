@@ -8,9 +8,10 @@ using Amelia.Data.Contexts;
 namespace Amelia.WebApp.Migrations
 {
     [DbContext(typeof(AmeliaContext))]
-    partial class AmeliaContextModelSnapshot : ModelSnapshot
+    [Migration("20170107070745_modify project structure")]
+    partial class modifyprojectstructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

@@ -52,20 +52,20 @@ namespace Amelia.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var sqlConnectionString = Configuration["Data:AmeliaConnection:ConnectionString"];
             services.AddDbContext<AmeliaContext>(options =>
             {
-                options.UseSqlServer(Configuration["Data:AmeliaConnection:ConnectionString"],
+                options.UseSqlServer(sqlConnectionString,
                 b => b.MigrationsAssembly("Amelia.WebApp"));
             });
 
             //Dependencies
             InitializeDependencies(services);
+            services.AddAuthentication();
 
-            AutoMapperConfiguration.Configure();
             // Enable Cors
             services.AddCors();
 
-            services.AddAuthentication();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy =>
@@ -74,17 +74,15 @@ namespace Amelia.WebApp
                 });
             });
 
-            // Add framework services.
-            services.AddOptions();
             services.AddMvc()
             .AddJsonOptions(options =>
             {
-              var resolver = options.SerializerSettings.ContractResolver;
+                var resolver = options.SerializerSettings.ContractResolver;
                 if (resolver != null)
                 {
                     var res = resolver as DefaultContractResolver;
                     res.NamingStrategy = null;
-}
+                }
             });
         }
 
@@ -93,7 +91,6 @@ namespace Amelia.WebApp
             RepositoryInstaller.Install(services);
             ServiceInstaller.Install(services);
             AuthenticationInstaller.Install(services);
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,7 +104,8 @@ namespace Amelia.WebApp
             {
                 app.UseExceptionHandler("/error");
             }
-            
+
+            AutoMapperConfiguration.Configure();
             app.UseFileServer();
 
             var provider = new PhysicalFileProvider(
@@ -132,14 +130,14 @@ namespace Amelia.WebApp
 
 
             app.UseMvc(routes =>
- {
-     routes.MapRoute(
-         name: "default",
-         template: "{controller=Home}/{action=Index}/{id?}");
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
-     // Uncomment the following line to add a route for porting Web API 2 controllers.
-     //routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
- });
+                // Uncomment the following line to add a route for porting Web API 2 controllers.
+                //routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
+            });
 
             DbInitializer.Initialize(app.ApplicationServices);
         }

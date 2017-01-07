@@ -8,6 +8,12 @@ namespace Amelia.WebApp.ViewModels.Mappings
         protected override void Configure()
         {
             MapUserToUserViewModel();
+            MapProjectToProjectViewModel();
+        }
+
+        private void MapProjectToProjectViewModel()
+        {
+            Mapper.CreateMap<Project, ProjectViewModel>();
         }
 
         private void MapUserToUserViewModel()
