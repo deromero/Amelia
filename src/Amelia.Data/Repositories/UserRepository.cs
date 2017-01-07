@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Amelia.Data.Contexts;
 using Amelia.Domain.Contracts.Repositories;

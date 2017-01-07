@@ -1,5 +1,3 @@
-using System;
-
 namespace Amelia.Domain.Models
 {
     public class Role : IEntityBase

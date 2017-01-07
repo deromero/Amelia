@@ -1,4 +1,3 @@
-using System;
 using Amelia.Domain.Contracts.Services;
 using Amelia.Services;
 using Microsoft.Extensions.DependencyInjection;
