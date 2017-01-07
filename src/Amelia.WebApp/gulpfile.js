@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     ts = require('gulp-typescript'),
+    sass = require('gulp-sass'),
     merge = require('merge'),
     fs = require("fs"),
     del = require('del'),
@@ -11,7 +12,9 @@ var lib = "./" + project.webroot + "/lib/";
 var paths = {
     npm: './node_modules/',
     tsSource: './wwwroot/app/**/*.ts',
+    scssSource: './wwwroot/scss/**/*.scss',
     tsOutput: lib + 'spa/',
+    scssOutput: './wwwroot/css/',
     tsDef: lib + 'definitions/',
     jsVendors: lib + 'js',
     jsRxJSVendors: lib + 'js/rxjs',
@@ -73,6 +76,13 @@ gulp.task('compile-typescript', function (done) {
     return tsResult.js.pipe(gulp.dest(paths.tsOutput));
 });
  
+gulp.task('sass',function(done){
+    var scssResult = gulp.src([
+        paths.scssSource
+    ]).pipe(sass());
+    return scssResult.pipe(gulp.dest(paths.scssOutput));
+});
+
 gulp.task('watch.ts', ['compile-typescript'], function () {
     return gulp.watch('wwwroot/app/**/*.ts', ['compile-typescript']);
 });
