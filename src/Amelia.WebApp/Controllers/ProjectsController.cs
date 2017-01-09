@@ -86,7 +86,7 @@ namespace Amelia.WebApp.Controllers
         }
 
         [Authorize(Policy = "AdminOnly")]
-        [HttpGet("{slug:string}")]
+        [HttpGet("{slug}")]
         public IActionResult GetBySlug(string slug)
         {
             var project = _projectService.Find(slug);

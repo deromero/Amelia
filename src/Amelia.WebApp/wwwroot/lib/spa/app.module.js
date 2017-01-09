@@ -19,10 +19,10 @@ var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var http_2 = require('@angular/http');
+var project_module_1 = require('./components/projects/project.module');
 var account_module_1 = require('./components/account/account.module');
 var app_component_1 = require('./app.component');
 var home_component_1 = require('./components/home.component');
-var projects_component_1 = require('./components/projects/projects.component');
 var routes_1 = require('./routes');
 var data_service_1 = require('./core/services/data.service');
 var membership_service_1 = require('./core/services/membership.service');
@@ -48,10 +48,15 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 routes_1.routing,
-                account_module_1.AccountModule
+                account_module_1.AccountModule,
+                project_module_1.ProjectModule
             ],
-            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, projects_component_1.ProjectsComponent],
-            providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
+            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
+            providers: [
+                data_service_1.DataService,
+                membership_service_1.MembershipService,
+                utility_service_1.UtilityService,
+                notification_service_1.NotificationService,
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }],
             bootstrap: [app_component_1.AppComponent]

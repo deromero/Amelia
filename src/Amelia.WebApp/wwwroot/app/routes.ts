@@ -2,8 +2,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home.component';
-import { ProjectsComponent } from './components/projects/projects.component';
 import { accountRoutes, accountRouting } from './components/account/routes';
+import { projectRoutes, projectRouting } from './components/projects/routes';
 
 
 const appRoutes: Routes = [
@@ -15,10 +15,6 @@ const appRoutes: Routes = [
     {
         path: 'home',
         component: HomeComponent
-    }, 
-    {
-        path: 'projects',
-        component: ProjectsComponent
     }
 ];
 
