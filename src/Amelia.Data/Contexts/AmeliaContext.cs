@@ -14,6 +14,23 @@ namespace Amelia.Data.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Module> Modules{get;set;}
+        public DbSet<ProjectRole> ProjectRoles{get;set;}
+        public DbSet<Member> Members{get;set;}
+        public DbSet<Task> Tasks{get;set;}
+        public DbSet<TaskType> TaskTypes{get;set;}
+        public DbSet<Sprint> Sprints{get;set;}
+        public DbSet<TaskStatus> TaskStatuses{get;set;}
+        public DbSet<ProjectValue> ProjectValues{get;set;}
+        public DbSet<ProjectValueType> ProjectValueTypes{get;set;}
+        public DbSet<Tag> Tags{get;set;}
+        public DbSet<Attachment> Attachments{get;set;}
+        public DbSet<Comment> Comments{get;set;}
+        public DbSet<Point> Points{get;set;}
+        public DbSet<TaskPoint> TaskPoints{get;set;}
+        public DbSet<TaskVote> TaskVotes{get;set;}
+        public DbSet<RequestType> RequestTypes{get;set;}
+
 
         public AmeliaContext(DbContextOptions options) : base(options) { }
 
@@ -33,6 +50,7 @@ namespace Amelia.Data.Contexts
 
             CreateModelUserAndRoles(modelBuilder);
             CreateModelProjects(modelBuilder);
+            CreateModelTasks(modelBuilder);
         }
 
         private void CreateModelProjects(ModelBuilder modelBuilder)
@@ -44,6 +62,14 @@ namespace Amelia.Data.Contexts
             modelBuilder.Entity<Project>().Property(p=>p.Slug).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<Project>().HasOne(p=>p.Owner);
                 
+            modelBuilder.Entity<Module>().ToTable("Modules");
+            modelBuilder.Entity<ProjectRole>().ToTable("ProjectRoles");
+            modelBuilder.Entity<Member>().ToTable("Members");
+            
+        }
+
+        private void CreateModelTasks(ModelBuilder modelBuilder){
+
         }
 
         private void CreateModelUserAndRoles(ModelBuilder modelBuilder)
