@@ -1,9 +1,6 @@
 {
     "projects":[
-        "src/Amelia.Data",
-        "src/Amelia.Domain",
-        "src/Amelia.Services",
-        "src/Amelia.Web.Core",
-        "src/Amelia.WebApp"
+        "src",
+        "tests"
     ]
 }

@@ -81,6 +81,11 @@ namespace Amelia.WebApp.Controllers
         public IActionResult GetById(int id)
         {
             var project = _projectService.FindById(id);
+            if (project == null)
+            {
+                return new ObjectResult(GenericResult.Failure("Project does not exist"));
+            }
+
             var viewModel = Mapper.Map<Project, ProjectViewModel>(project);
             return new ObjectResult(viewModel);
         }
@@ -90,8 +95,13 @@ namespace Amelia.WebApp.Controllers
         public IActionResult GetBySlug(string slug)
         {
             var project = _projectService.Find(slug);
+            if (project == null)
+            {
+                return new ObjectResult(GenericResult.Failure("Project does not exist"));
+            }
+
             var viewModel = Mapper.Map<Project, ProjectViewModel>(project);
-            return new ObjectResult(viewModel);
+            return new OkObjectResult(viewModel);
         }
 
         [Route("create")]
