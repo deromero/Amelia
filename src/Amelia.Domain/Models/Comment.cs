@@ -16,7 +16,7 @@ namespace Amelia.Domain.Models
         public bool IsResolved { get; set; }
         public Task Task { get; set; }
 
-        public virtual IEnumerable<Attachment> Attachments { get; set; }
+        public virtual IEnumerable<CommentAttachment> Attachments { get; set; }
 
     }
 }

@@ -13,17 +13,15 @@ namespace Amelia.Domain.Models
         public Project Project{get;set;}
         public Sprint Sprint{get;set;}
         public TaskType TaskType{get;set;}
+        public RequestType RequestType {get;set;}
+        
         public Member CreatedBy{get;set;}
         public Member AssignedTo{get;set;}
-        public Task ParentTask{get;set;}
-
-        public RequestType RequestType {get;set;}
-
-        public virtual IEnumerable<Task> ChildTasks{get;set;}
-        public virtual IEnumerable<Task> RelatedTasks{get;set;}
-        public virtual IEnumerable<Tag> Tags{get;set;}
+        public int? ParentId{get;set;}
+        public virtual Task Parent{get;set;}
+        public virtual IEnumerable<Task> Children{get;set;}
+        public virtual IEnumerable<TaskTag> Tags{get;set;}
         public virtual IEnumerable<Comment> Comments{get;set;}
-        public virtual IEnumerable<Attachment> Attachments{get;set;}
         public virtual IEnumerable<Point> Points{get;set;}
     }
 }

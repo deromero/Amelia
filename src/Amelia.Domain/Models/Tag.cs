@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Amelia.Domain.Models
 {
@@ -9,6 +8,5 @@ namespace Amelia.Domain.Models
         public string Name {get;set;}
         public DateTime CreatedOn{get;set;}
         public Project Project{get;set;}
-        public IEnumerable<Task> Tasks{get;set;}
     }
 }
