@@ -42,7 +42,7 @@ namespace Amelia.Tests.WebApp.Controllers
             );
         }
 
-        [Test]
+        [Test,Description("Can get a project using a slug")]
         public void GetBySlugReturnsAProject()
         {
             var slug = "project-one";
@@ -71,7 +71,7 @@ namespace Amelia.Tests.WebApp.Controllers
             Assert.IsTrue(returnProject.Slug.Equals(slug));
         }
 
-        [Test]
+        [Test, Description("Get a failure result with a fair slug")]
         public void GetBySlugReturnsFailureResult()
         {
             var slug = "not-existing-project";
