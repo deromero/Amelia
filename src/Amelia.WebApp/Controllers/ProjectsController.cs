@@ -87,7 +87,7 @@ namespace Amelia.WebApp.Controllers
             }
 
             var viewModel = Mapper.Map<Project, ProjectViewModel>(project);
-            return new ObjectResult(viewModel);
+            return new OkObjectResult(viewModel);
         }
 
         [Authorize(Policy = "AdminOnly")]
