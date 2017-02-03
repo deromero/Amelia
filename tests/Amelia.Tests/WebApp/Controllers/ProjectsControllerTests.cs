@@ -9,6 +9,7 @@ using Amelia.WebApp.Models;
 using System.Net;
 using Amelia.WebApp.ViewModels;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace Amelia.Tests.WebApp.Controllers
 {
@@ -42,7 +43,39 @@ namespace Amelia.Tests.WebApp.Controllers
             );
         }
 
-        [Test,Description("Can get a project using a slug")]
+        [Ignore("bypass")]
+        [Test, Description("Can ge a List of Projects")]
+        public void CanGetAListOfProjects()
+        {
+            var project = new Project()
+            {
+                Id = 2132,
+                Name = "Project Name",
+                Slug = "project-one",
+            };
+
+            var viewModel = new ProjectViewModel
+            {
+                Id = 2132,
+                Name = "Project Name",
+                Slug = "project-one"
+            };
+
+            var projectList = new List<Project> { project };
+
+            _projectServiceMock.Setup(x => x.GetAll()).Returns(projectList);
+            _mapperMock.Setup(x => x.Map<Project, ProjectViewModel>(project))
+                            .Returns(viewModel);
+
+            var actionResult = _controller.Get(0, 1).Result as OkObjectResult;
+            var returnList = actionResult.Value as PaginationSet<ProjectViewModel>;
+
+            Assert.IsTrue(actionResult.StatusCode == (int)HttpStatusCode.OK);
+            Assert.Equals(returnList.Count, 1);
+
+        }
+
+        [Test, Description("Can get a project using a slug")]
         public void GetBySlugReturnsAProject()
         {
             var slug = "project-one";
@@ -83,7 +116,7 @@ namespace Amelia.Tests.WebApp.Controllers
             Assert.IsFalse(genericResult.Succeeded);
         }
 
-        [Test]
+        [Test, Description("Get by Id Returns a Project")]
         public void GetByIdReturnsAProject()
         {
             var id = 2132;
@@ -112,7 +145,7 @@ namespace Amelia.Tests.WebApp.Controllers
             Assert.IsTrue(returnProject.Id.Equals(id));
         }
 
-        [Test]
+        [Test, Description("Get by Id Returns a Failure Result")]
         public void GetByIdReturnsFailureResult()
         {
             var id = 2132;

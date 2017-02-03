@@ -1,9 +1,9 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccountComponent } from './account.component';
-import { LoginComponent } from './login.component';
-import { RegisterComponent } from './register.component';
+import { AccountComponent } from './components/account.component';
+import { LoginComponent } from './components/login.component';
+import { RegisterComponent } from './components/register.component';
 
 export const accountRoutes: Routes = [
     {
@@ -16,4 +16,5 @@ export const accountRoutes: Routes = [
     }
 ];
 
-export const accountRouting: ModuleWithProviders = RouterModule.forChild(accountRoutes);
+export const accountRouting: 
+    ModuleWithProviders = RouterModule.forChild(accountRoutes);

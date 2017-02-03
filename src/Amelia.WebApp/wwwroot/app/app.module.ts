@@ -5,9 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
 
-import { ProjectModule } from './components/projects/project.module';
-import { AccountModule } from './components/account/account.module';
+import { AccountModule } from './modules/account/account.module';
+import { ProjectModule } from './modules/projects/project.module';
+
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home.component';
 import { routing } from './routes';
 
@@ -35,7 +37,11 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         AccountModule,
         ProjectModule
     ],
-    declarations: [AppComponent, HomeComponent],
+    declarations: [
+        AppComponent, 
+        HeaderComponent,
+        HomeComponent
+        ],
     providers: [
         DataService, 
         MembershipService, 

@@ -81,7 +81,7 @@ namespace Amelia.WebApp
                 if (resolver != null)
                 {
                     var res = resolver as DefaultContractResolver;
-                    res.NamingStrategy = null;
+                    res.NamingStrategy = new CamelCaseNamingStrategy();
                 }
             });
         }

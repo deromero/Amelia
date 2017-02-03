@@ -1,7 +1,7 @@
 import { Http, Response, Request } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
-import { ProjectForm } from '../domain/projectForm';
+import { ProjectForm } from '../../modules/projects/domain/projectForm';
 import { Project } from '../domain/project';
 
 @Injectable()

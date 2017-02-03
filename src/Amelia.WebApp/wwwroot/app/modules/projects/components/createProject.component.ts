@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectForm } from '../../core/domain/projectForm';
-import { OperationResult } from '../../core/domain/operationResult';
-import { NotificationService } from '../../core/services/notification.service';
-import { ProjectService } from '../../core/services/project.service';
+import { ProjectForm } from '../domain/projectForm';
+import { OperationResult } from '../../../core/domain/operationResult';
+import { NotificationService } from '../../../core/services/notification.service';
+import { ProjectService } from '../../../core/services/project.service';
 
 @Component({
     selector: 'createProject',
     providers: [ProjectService, NotificationService],
-    templateUrl: './app/components/projects/createProject.component.html'
+    templateUrl: './app/modules/projects/components/createProject.component.html'
 })
 export class CreateProjectComponent implements OnInit {
 

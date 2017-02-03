@@ -73,7 +73,7 @@ namespace Amelia.WebApp.Controllers
                 _loggingService.Add(Error.FromException(exception));
             }
 
-            return new ObjectResult(pagedSet);
+            return new OkObjectResult(pagedSet);
         }
 
         [Authorize(Policy = "AdminOnly")]

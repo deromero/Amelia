@@ -19,9 +19,10 @@ var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var http_2 = require('@angular/http');
-var project_module_1 = require('./components/projects/project.module');
-var account_module_1 = require('./components/account/account.module');
+var account_module_1 = require('./modules/account/account.module');
+var project_module_1 = require('./modules/projects/project.module');
 var app_component_1 = require('./app.component');
+var header_component_1 = require('./components/header/header.component');
 var home_component_1 = require('./components/home.component');
 var routes_1 = require('./routes');
 var data_service_1 = require('./core/services/data.service');
@@ -51,7 +52,11 @@ var AppModule = (function () {
                 account_module_1.AccountModule,
                 project_module_1.ProjectModule
             ],
-            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                header_component_1.HeaderComponent,
+                home_component_1.HomeComponent
+            ],
             providers: [
                 data_service_1.DataService,
                 membership_service_1.MembershipService,
