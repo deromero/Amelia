@@ -3,7 +3,7 @@ import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
 import { DataService } from '../../core/services/data.service';
-import { MembershipService } from '../../core/services/membership.service';
+import { MembershipService } from './services/membership.service';
 import { NotificationService } from '../../core/services/notification.service';
 
 import { AccountComponent } from './components/account.component';

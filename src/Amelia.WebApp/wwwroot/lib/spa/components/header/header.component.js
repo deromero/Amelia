@@ -43,8 +43,9 @@ var HeaderComponent = (function () {
             selector: 'am-header',
             templateUrl: './app/components/header/header.component.html'
         }), 
-        __metadata('design:paramtypes', [membership_service_1.MembershipService, common_1.Location])
+        __metadata('design:paramtypes', [(typeof (_a = typeof membership_service_1.MembershipService !== 'undefined' && membership_service_1.MembershipService) === 'function' && _a) || Object, common_1.Location])
     ], HeaderComponent);
     return HeaderComponent;
+    var _a;
 }());
 exports.HeaderComponent = HeaderComponent;

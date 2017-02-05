@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var user_1 = require('../../../core/domain/user');
+var user_1 = require('../domain/user');
 var operationResult_1 = require('../../../core/domain/operationResult');
-var membership_service_1 = require('../../../core/services/membership.service');
+var membership_service_1 = require('../services/membership.service');
 var notification_service_1 = require('../../../core/services/notification.service');
 var LoginComponent = (function () {
     function LoginComponent(membershipService, notificationService, router) {

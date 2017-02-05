@@ -7,13 +7,8 @@ import { projectRoutes, projectRouting } from './modules/projects/routes';
 
 
 const appRoutes: Routes = [
-    {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent }
-    
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

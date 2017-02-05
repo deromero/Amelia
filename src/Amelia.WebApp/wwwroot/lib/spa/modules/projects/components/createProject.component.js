@@ -46,9 +46,10 @@ var CreateProjectComponent = (function () {
             providers: [project_service_1.ProjectService, notification_service_1.NotificationService],
             templateUrl: './app/modules/projects/components/createProject.component.html'
         }), 
-        __metadata('design:paramtypes', [project_service_1.ProjectService, notification_service_1.NotificationService, router_1.Router])
+        __metadata('design:paramtypes', [(typeof (_a = typeof project_service_1.ProjectService !== 'undefined' && project_service_1.ProjectService) === 'function' && _a) || Object, notification_service_1.NotificationService, router_1.Router])
     ], CreateProjectComponent);
     return CreateProjectComponent;
+    var _a;
 }());
 exports.CreateProjectComponent = CreateProjectComponent;
 ;

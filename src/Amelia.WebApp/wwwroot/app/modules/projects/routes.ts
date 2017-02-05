@@ -6,20 +6,9 @@ import { ProjectDetailComponent } from './components/projectDetail.component';
 import { CreateProjectComponent } from './components/createProject.component';
 
 export const projectRoutes: Routes = [
-    {
-        path: 'projects',
-        component: ProjectsComponent,
-
-    },
-    {
-        path: 'projects/:slug',
-        component: ProjectDetailComponent,
-    },
-    {
-        path: 'projects/create',
-        component: CreateProjectComponent
-    }
-];
-
+    { path: 'projects', component: ProjectsComponent },
+    { path: 'project/new', component: CreateProjectComponent },
+    { path: 'project/:slug', component: ProjectDetailComponent }
+]
 export const projectRouting:
     ModuleWithProviders = RouterModule.forChild(projectRoutes);

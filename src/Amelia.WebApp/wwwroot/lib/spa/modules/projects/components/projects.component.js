@@ -36,10 +36,10 @@ var ProjectsComponent = (function (_super) {
         this.projectService.get(this._page)
             .subscribe(function (res) {
             var data = res.json();
-            _this._projects = data.items;
-            _this._page = data.page;
-            _this._pagesCount = data.totalPages;
-            _this._totalCount = data.totalCount;
+            _this._projects = data.Items;
+            _this._page = data.Page;
+            _this._pagesCount = data.TotalPages;
+            _this._totalCount = data.TotalCount;
         }, function (error) {
             if (error.status == 401 || error.status == 404) {
                 _this.notificationService.printErrorMessage("Authentication required");

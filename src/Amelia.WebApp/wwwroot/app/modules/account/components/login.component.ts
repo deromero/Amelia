@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../../core/domain/user';
+import { User } from '../domain/user';
 import { OperationResult } from '../../../core/domain/operationResult';
-import { MembershipService } from '../../../core/services/membership.service';
+import { MembershipService } from '../services/membership.service';
 import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({

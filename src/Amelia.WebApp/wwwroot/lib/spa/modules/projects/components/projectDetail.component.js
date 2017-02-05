@@ -32,8 +32,9 @@ var ProjectDetailComponent = (function () {
             selector: 'am-project',
             templateUrl: './app/modules/projects/components/projectDetail.component.html'
         }), 
-        __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService, membership_service_1.MembershipService])
+        __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService, (typeof (_a = typeof membership_service_1.MembershipService !== 'undefined' && membership_service_1.MembershipService) === 'function' && _a) || Object])
     ], ProjectDetailComponent);
     return ProjectDetailComponent;
+    var _a;
 }());
 exports.ProjectDetailComponent = ProjectDetailComponent;
