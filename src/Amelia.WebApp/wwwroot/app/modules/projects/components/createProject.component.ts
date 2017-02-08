@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ProjectForm } from '../domain/projectForm';
 import { OperationResult } from '../../../core/domain/operationResult';
 import { NotificationService } from '../../../core/services/notification.service';
-import { ProjectService } from '../../../core/services/project.service';
+import { ProjectService } from '../services/project.service';
 
 @Component({
     selector: 'createProject',
@@ -19,7 +19,7 @@ export class CreateProjectComponent implements OnInit {
         public router: Router) { }
 
     ngOnInit() {
-        this._newProject = new ProjectForm(0, '', '', false, 0, 0);
+        this._newProject = new ProjectForm(0, '', '', false, 1, 0);
     }
 
     create(): void {
@@ -35,7 +35,7 @@ export class CreateProjectComponent implements OnInit {
                     this.notificationService.printSuccessMessage(result.Message)
                     this.router.navigate(['projects']);
                 }
-                else{
+                else {
                     this.notificationService.printErrorMessage(result.Message);
                 }
             });

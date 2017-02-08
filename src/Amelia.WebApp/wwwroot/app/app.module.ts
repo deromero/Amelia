@@ -14,7 +14,7 @@ import { HomeComponent } from './components/home.component';
 import { routing } from './routes';
 
 import { DataService } from './core/services/data.service';
-import { MembershipService } from './core/services/membership.service';
+import { MembershipService } from './modules/account/services/membership.service';
 import { UtilityService } from './core/services/utility.service';
 import { NotificationService } from './core/services/notification.service';
 

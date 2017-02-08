@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map';
 import {enableProdMode} from '@angular/core';
 
 enableProdMode();
-import { MembershipService } from './core/services/membership.service';
-import { User } from './core/domain/user';
+import { MembershipService } from './modules/account/services/membership.service';
+import { User } from './modules/account/domain/user';
 
 @Component({
     selector: 'amelia-app',

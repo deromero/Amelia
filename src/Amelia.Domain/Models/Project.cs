@@ -19,5 +19,6 @@ namespace Amelia.Domain.Models
 
         public virtual IEnumerable<Module> Modules {get;set;}
         public virtual IEnumerable<Role> Roles{get;set;}
+    
     }
 }

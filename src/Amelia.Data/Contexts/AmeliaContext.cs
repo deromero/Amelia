@@ -36,12 +36,12 @@ namespace Amelia.Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var entity in modelBuilder.Model.GetEntityTypes())
-            {
-                entity.Relational().TableName = entity.DisplayName();
-            }
-
-            foreach (var relationiship in modelBuilder.Model.GetEntityTypes()
+           // foreach (var entity in modelBuilder.Model.GetEntityTypes())
+          //  {
+           //     entity.Relational().TableName = entity.DisplayName();
+          //  }
+ 
+             foreach (var relationiship in modelBuilder.Model.GetEntityTypes()
                         .SelectMany(e => e.GetForeignKeys()))
             {
                 relationiship.DeleteBehavior = DeleteBehavior.Restrict;
@@ -51,6 +51,14 @@ namespace Amelia.Data.Contexts
             CreateModelUserAndRoles(modelBuilder);
             CreateModelProjects(modelBuilder);
             CreateModelTasks(modelBuilder);
+            CreateModelOther(modelBuilder);
+        }
+
+        private void CreateModelOther(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Error>().ToTable("Errors");
+            modelBuilder.Entity<Tag>().ToTable("Tags");
         }
 
         private void CreateModelProjects(ModelBuilder modelBuilder)

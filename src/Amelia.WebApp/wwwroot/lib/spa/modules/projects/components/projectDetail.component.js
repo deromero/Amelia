@@ -13,7 +13,7 @@ var core_1 = require('@angular/core');
 var data_service_1 = require('../../../core/services/data.service');
 var utility_service_1 = require('../../../core/services/utility.service');
 var notification_service_1 = require('../../../core/services/notification.service');
-var membership_service_1 = require('../../../core/services/membership.service');
+var membership_service_1 = require('../../../modules/account/services/membership.service');
 var ProjectDetailComponent = (function () {
     function ProjectDetailComponent(projectService, utilityService, notificationService, membershipService) {
         this.projectService = projectService;
@@ -32,9 +32,8 @@ var ProjectDetailComponent = (function () {
             selector: 'am-project',
             templateUrl: './app/modules/projects/components/projectDetail.component.html'
         }), 
-        __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService, (typeof (_a = typeof membership_service_1.MembershipService !== 'undefined' && membership_service_1.MembershipService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService, membership_service_1.MembershipService])
     ], ProjectDetailComponent);
     return ProjectDetailComponent;
-    var _a;
 }());
 exports.ProjectDetailComponent = ProjectDetailComponent;

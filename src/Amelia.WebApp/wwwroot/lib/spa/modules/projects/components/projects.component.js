@@ -28,7 +28,7 @@ var ProjectsComponent = (function (_super) {
         this._projectsAPI = 'api/projects/';
     }
     ProjectsComponent.prototype.ngOnInit = function () {
-        this.projectService.set(this._projectsAPI, 3);
+        this.projectService.set(this._projectsAPI, 10);
         this.getProjects();
     };
     ProjectsComponent.prototype.getProjects = function () {

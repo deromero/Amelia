@@ -13,7 +13,7 @@ var router_1 = require('@angular/router');
 var projectForm_1 = require('../domain/projectForm');
 var operationResult_1 = require('../../../core/domain/operationResult');
 var notification_service_1 = require('../../../core/services/notification.service');
-var project_service_1 = require('../../../core/services/project.service');
+var project_service_1 = require('../services/project.service');
 var CreateProjectComponent = (function () {
     function CreateProjectComponent(projectService, notificationService, router) {
         this.projectService = projectService;
@@ -21,7 +21,7 @@ var CreateProjectComponent = (function () {
         this.router = router;
     }
     CreateProjectComponent.prototype.ngOnInit = function () {
-        this._newProject = new projectForm_1.ProjectForm(0, '', '', false, 0, 0);
+        this._newProject = new projectForm_1.ProjectForm(0, '', '', false, 1, 0);
     };
     CreateProjectComponent.prototype.create = function () {
         var _this = this;
@@ -46,10 +46,9 @@ var CreateProjectComponent = (function () {
             providers: [project_service_1.ProjectService, notification_service_1.NotificationService],
             templateUrl: './app/modules/projects/components/createProject.component.html'
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof project_service_1.ProjectService !== 'undefined' && project_service_1.ProjectService) === 'function' && _a) || Object, notification_service_1.NotificationService, router_1.Router])
+        __metadata('design:paramtypes', [project_service_1.ProjectService, notification_service_1.NotificationService, router_1.Router])
     ], CreateProjectComponent);
     return CreateProjectComponent;
-    var _a;
 }());
 exports.CreateProjectComponent = CreateProjectComponent;
 ;

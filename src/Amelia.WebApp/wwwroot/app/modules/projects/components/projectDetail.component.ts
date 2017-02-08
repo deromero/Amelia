@@ -7,8 +7,8 @@ import { Paginated } from '../../../core/common/paginated';
 import { DataService } from '../../../core/services/data.service';
 import { UtilityService } from '../../../core/services/utility.service';
 import { NotificationService } from '../../../core/services/notification.service';
-import { MembershipService } from '../../../core/services/membership.service';
-import { User } from '../../../core/domain/user';
+import { MembershipService } from '../../../modules/account/services/membership.service';
+import { User } from '../../../modules/account/domain/user';
 
 @Component({
     selector: 'am-project',

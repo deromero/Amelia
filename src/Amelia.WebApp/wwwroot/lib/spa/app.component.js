@@ -14,7 +14,7 @@ var common_1 = require('@angular/common');
 require('rxjs/add/operator/map');
 var core_2 = require('@angular/core');
 core_2.enableProdMode();
-var membership_service_1 = require('./core/services/membership.service');
+var membership_service_1 = require('./modules/account/services/membership.service');
 var AppComponent = (function () {
     function AppComponent(membershipService, location) {
         this.membershipService = membershipService;
@@ -43,9 +43,8 @@ var AppComponent = (function () {
             selector: 'amelia-app',
             templateUrl: './app/app.component.html'
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof membership_service_1.MembershipService !== 'undefined' && membership_service_1.MembershipService) === 'function' && _a) || Object, common_1.Location])
+        __metadata('design:paramtypes', [membership_service_1.MembershipService, common_1.Location])
     ], AppComponent);
     return AppComponent;
-    var _a;
 }());
 exports.AppComponent = AppComponent;

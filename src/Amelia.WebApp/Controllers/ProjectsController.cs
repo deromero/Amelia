@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amelia.Domain.Common;
 using Amelia.Domain.Contracts.Services;
 using Amelia.Domain.Models;
 using Amelia.WebApp.Models;
@@ -117,17 +118,16 @@ namespace Amelia.WebApp.Controllers
                 {
                     var project = new Project
                     {
-                        Name = formModel.Name,
+                        Name = formModel.Name.TrimEnd(),
                         Description = formModel.Description,
                         ProjectType = formModel.ProjectType,
                         IsPrivate = formModel.IsPrivate,
-                        Owner = _userService.Find(User.Identity.Name)
+                        Owner = _userService.Find(User.Identity.Name),
                     };
 
                     _projectService.Create(project);
 
                     newProjectResult = GenericResult.Ok("creation suceeded");
-
                 }
             }
             catch (System.Exception exception)

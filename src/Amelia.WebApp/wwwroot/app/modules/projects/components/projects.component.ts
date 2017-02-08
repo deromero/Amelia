@@ -21,7 +21,7 @@ export class ProjectsComponent extends Paginated implements OnInit {
     }
 
     ngOnInit() {
-        this.projectService.set(this._projectsAPI, 3);
+        this.projectService.set(this._projectsAPI, 10);
         this.getProjects();
     }
 

@@ -7,7 +7,7 @@ namespace Amelia.WebApp.Models
 
         public static GenericResult Ok(string message)
         {
-            return Generate(false,message);
+            return Generate(true,message);
         }
 
         public static GenericResult Failure(string message)
