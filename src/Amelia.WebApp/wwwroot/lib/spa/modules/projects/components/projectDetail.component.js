@@ -22,10 +22,10 @@ var ProjectDetailComponent = (function () {
         this.membershipService = membershipService;
     }
     ProjectDetailComponent.prototype.ngOnInit = function () {
-        /*
+        var _this = this;
         this.route.params
-            .switchMap((params: Params) => this.projectService.getBySlug(+params['slug']))
-            .subscribe(project => this.project = project);*/
+            .switchMap(function (params) { return _this.projectService.getBySlug(params['slug']); })
+            .subscribe(function (project) { return _this.project = project; });
     };
     ProjectDetailComponent = __decorate([
         core_1.Component({

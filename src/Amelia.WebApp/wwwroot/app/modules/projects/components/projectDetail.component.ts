@@ -16,16 +16,18 @@ import { User } from '../../../modules/account/domain/user';
 })
 export class ProjectDetailComponent implements OnInit {
 
+    public project: Project;
+
     constructor(public projectService: DataService,
         public utilityService: UtilityService,
         public notificationService: NotificationService,
         public membershipService: MembershipService) { }
 
     ngOnInit(): void {
-        /*
+        
         this.route.params
-            .switchMap((params: Params) => this.projectService.getBySlug(+params['slug']))
-            .subscribe(project => this.project = project);*/
+            .switchMap((params: Params) => this.projectService.getBySlug(params['slug']))
+            .subscribe(project => this.project = project);
     }
 
 }

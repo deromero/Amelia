@@ -22,16 +22,28 @@ namespace Amelia.Services
             return _projectRepository.GetAll();
         }
 
-        public void Create(Project project)
+        public ActionConfirmation Create(Project project)
         {
-            //Default data before save
-            project.Slug = Utilities.RemoveSpacesAndSpecialsChars(project.Name.ToLowerInvariant());
-            project.CreatedOn = DateTime.Now;
-            project.UpdatedOn = DateTime.Now;
-            project.Status = (short)ProjectStatus.Draft;
+            try
+            {
+                //Default data before save
+                project.Slug = Utilities.RemoveSpacesAndSpecialsChars(project.Name.ToLowerInvariant());
+                project.CreatedOn = DateTime.Now;
+                project.UpdatedOn = DateTime.Now;
+                project.Status = (short)ProjectStatus.Draft;
 
-            _projectRepository.Add(project);
-            _projectRepository.Commit();
+                _projectRepository.Add(project);
+                _projectRepository.Commit();
+
+                var confirmation = ActionConfirmation.CreateSuccess(project.Name + " Created");
+                confirmation.Value = project;
+
+                return confirmation;
+            }
+            catch (System.Exception exception)
+            {
+                return ActionConfirmation.CreateFailure(exception.Message);
+            }
         }
 
         public Project FindById(int projectId)

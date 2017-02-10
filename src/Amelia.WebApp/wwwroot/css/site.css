@@ -40,3 +40,9 @@
 
 .btn {
   text-transform: uppercase; }
+
+.single-project .intro {
+  border: 1px dotted red; }
+
+.single-project .data {
+  border: 1px dotted blue; }

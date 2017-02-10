@@ -125,9 +125,22 @@ namespace Amelia.WebApp.Controllers
                         Owner = _userService.Find(User.Identity.Name),
                     };
 
-                    _projectService.Create(project);
+                    var confirmation = _projectService.Create(project);
 
-                    newProjectResult = GenericResult.Ok("creation suceeded");
+                    if (confirmation.WasSuccessful)
+                    {
+                        newProjectResult = GenericResult.Ok(confirmation.Message);
+                        var newProject = confirmation.Value as Project;
+                        newProjectResult.ReturnValue = new
+                        {
+                            Id = newProject.Id,
+                            Slug = newProject.Slug
+                        };
+                    }
+                    else
+                    {
+                        newProjectResult = GenericResult.Failure(confirmation.Message);
+                    }
                 }
             }
             catch (System.Exception exception)

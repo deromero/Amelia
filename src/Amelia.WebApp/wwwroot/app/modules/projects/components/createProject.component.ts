@@ -28,12 +28,13 @@ export class CreateProjectComponent implements OnInit {
             .subscribe(res => {
                 result.Succeeded = res.Succeeded;
                 result.Message = res.Message;
+                result.Value = res.ReturnValue;
             },
             error => console.error('Error: ' + error),
             () => {
                 if (result.Succeeded) {
-                    this.notificationService.printSuccessMessage(result.Message)
-                    this.router.navigate(['projects']);
+                    this.notificationService.printSuccessMessage(result.Message);
+                    this.router.navigate(['project',result.Value.Slug]);
                 }
                 else {
                     this.notificationService.printErrorMessage(result.Message);

@@ -30,10 +30,11 @@ var CreateProjectComponent = (function () {
             .subscribe(function (res) {
             result.Succeeded = res.Succeeded;
             result.Message = res.Message;
+            result.Value = res.ReturnValue;
         }, function (error) { return console.error('Error: ' + error); }, function () {
             if (result.Succeeded) {
                 _this.notificationService.printSuccessMessage(result.Message);
-                _this.router.navigate(['projects']);
+                _this.router.navigate(['project', result.Value.Slug]);
             }
             else {
                 _this.notificationService.printErrorMessage(result.Message);
