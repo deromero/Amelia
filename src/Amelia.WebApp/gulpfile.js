@@ -41,7 +41,8 @@ gulp.task('setup-vendors', function (done) {
       'bower_components/components-font-awesome/css/font-awesome.css',
       'bower_components/alertify.js/themes/alertify.core.css',
       'bower_components/alertify.js/themes/alertify.bootstrap.css',
-      'bower_components/alertify.js/themes/alertify.default.css'
+      'bower_components/alertify.js/themes/alertify.default.css',
+      'bower_components/simple-line-icons/css/simple-line-icons.css'
     ]).pipe(gulp.dest(paths.cssVendors));
  
     gulp.src([
@@ -65,6 +66,11 @@ gulp.task('setup-vendors', function (done) {
       'bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf',
       'bower_components/components-font-awesome/fonts/fontawesome-webfont.woff',
       'bower_components/components-font-awesome/fonts/fontawesome-webfont.woff2',
+      'bower_components/simple-line-icons/fonts/Simple-Line-Icons.eot',
+      'bower_components/simple-line-icons/fonts/Simple-Line-Icons.svg',
+      'bower_components/simple-line-icons/fonts/Simple-Line-Icons.ttf',
+      'bower_components/simple-line-icons/fonts/Simple-Line-Icons.woff',
+      'bower_components/simple-line-icons/fonts/Simple-Line-Icons.woff2'
     ]).pipe(gulp.dest(paths.fontsVendors));
 });
  

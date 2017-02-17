@@ -9,15 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var notification_service_1 = require('../core/services/notification.service');
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(notificationService) {
+        this.notificationService = notificationService;
     }
+    HomeComponent.prototype.ngOnInit = function () {
+        this.notificationService.printSuccessMessage("ingreso");
+    };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home',
             templateUrl: './app/components/home.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [notification_service_1.NotificationService])
     ], HomeComponent);
     return HomeComponent;
 }());

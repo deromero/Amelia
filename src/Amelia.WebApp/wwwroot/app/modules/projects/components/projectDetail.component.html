@@ -1,11 +1,13 @@
-<section class="single-project center">
-    <div class="row title">
-        <div class="col-md-1">
-            LOGO
-        </div>
-        <div class="col-md-11">
-            <h2>{{project.Name}}</h2>
-            <p>{{project.Description}}</p>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <am-sidebar *ngIf="_project" [_project]="_project"></am-sidebar>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Aqui va el contenido {{_project?.Name}}</h1>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>

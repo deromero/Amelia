@@ -23,6 +23,11 @@ var DataService = (function () {
         return this.http.get(uri)
             .map(function (response) { return (response); });
     };
+    DataService.prototype.getSingle = function (id) {
+        var uri = this._baseUri + '/' + id;
+        return this.http.get(uri)
+            .map(function (response) { return (response); });
+    };
     DataService.prototype.post = function (data, mapJson) {
         if (mapJson === void 0) { mapJson = true; }
         if (mapJson)

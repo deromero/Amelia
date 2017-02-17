@@ -8,7 +8,7 @@ import { Project } from '../domain/project';
 export class ProjectService {
 
     private _projectCreateAPI: string = 'api/projects/create';
-    private _projectGetBySlugAPI: string = 'api/projects/getBySlug?slug=';
+    private _projectGetBySlugAPI: string = 'api/projects/get';
 
     constructor(public dataService: DataService) { }
 
@@ -18,7 +18,7 @@ export class ProjectService {
     }
 
     public getBySlug(slug: string){
-        this.dataService.set(this._projectGetBySlugAPI + slug);
-        return this.dataService.get(0);
+        this.dataService.set(this._projectGetBySlugAPI);
+        return this.dataService.getSingle(slug);
     }
 }

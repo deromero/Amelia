@@ -1,34 +1,24 @@
-@{
-    ViewBag.Title = "Amelia Project Manager";
-}
- 
-@section styles
-{
-    
-    <link href="~/lib/css/jquery.fancybox.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/lib/css/alertify.core.css" rel="stylesheet" />
-    <link href="~/lib/css/alertify.bootstrap.css" rel="stylesheet" />
-    
-}
- 
-<div id="nav-separator"></div>
- 
-<amelia-app>
-    <div class="loading">Loading</div>
-</amelia-app>
- 
-@section scripts
-{
-    <script src="~/lib/js/jquery.fancybox.pack.js"></script>
-    <script src="~/lib/js/alertify.min.js"></script>
-    <script src="~/lib/spa/common.js"></script>
-}
- 
-@section customScript
-{
+@{ ViewBag.Title = "Amelia Project Manager"; } @section styles {
+
+<link href="~/lib/css/jquery.fancybox.css" rel="stylesheet" />
+<link href="~/lib/css/alertify.core.css" rel="stylesheet" />
+<link href="~/lib/css/alertify.bootstrap.css" rel="stylesheet" /> }
+
+<div class="page-wrapper">
+    <amelia-app>
+        <div class="loading">Loading</div>
+    </amelia-app>
+</div>
+@section scripts {
+<script src="~/lib/js/jquery.fancybox.pack.js"></script>
+<script src="~/lib/js/alertify.min.js"></script>
+<script src="~/lib/js/am/app.js"></script>
+<script src="~/lib/js/am/layout.js"></script>
+} 
+
+@section customScript {
     System.import('app').catch(console.log.bind(console));
-    $(document).ready(function() {
-        $('.fancybox').fancybox();
-    });
+    $(document).ready(function() { 
+         $('.fancybox').fancybox();
+    }); 
 }

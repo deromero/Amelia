@@ -14,15 +14,15 @@ var ProjectService = (function () {
     function ProjectService(dataService) {
         this.dataService = dataService;
         this._projectCreateAPI = 'api/projects/create';
-        this._projectGetBySlugAPI = 'api/projects/getBySlug?slug=';
+        this._projectGetBySlugAPI = 'api/projects/get';
     }
     ProjectService.prototype.create = function (newProject) {
         this.dataService.set(this._projectCreateAPI);
         return this.dataService.post(JSON.stringify(newProject));
     };
     ProjectService.prototype.getBySlug = function (slug) {
-        this.dataService.set(this._projectGetBySlugAPI + slug);
-        return this.dataService.get(0);
+        this.dataService.set(this._projectGetBySlugAPI);
+        return this.dataService.getSingle(slug);
     };
     ProjectService = __decorate([
         core_1.Injectable(), 

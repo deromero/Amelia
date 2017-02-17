@@ -12,11 +12,12 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
 var data_service_1 = require('../../core/services/data.service');
-var membership_service_1 = require('../../modules/account/services/membership.service');
+var project_service_1 = require('./services/project.service');
 var notification_service_1 = require('../../core/services/notification.service');
 var projects_component_1 = require('./components/projects.component');
 var projectDetail_component_1 = require('./components/projectDetail.component');
 var createProject_component_1 = require('./components/createProject.component');
+var sidebar_component_1 = require('../../components/sidebar/sidebar.component');
 var routes_1 = require('./routes');
 var ProjectModule = (function () {
     function ProjectModule() {
@@ -29,13 +30,14 @@ var ProjectModule = (function () {
                 routes_1.projectRouting
             ],
             declarations: [
+                sidebar_component_1.SidebarComponent,
                 projects_component_1.ProjectsComponent,
                 projectDetail_component_1.ProjectDetailComponent,
                 createProject_component_1.CreateProjectComponent
             ],
             providers: [
                 data_service_1.DataService,
-                membership_service_1.MembershipService,
+                project_service_1.ProjectService,
                 notification_service_1.NotificationService
             ]
         }), 

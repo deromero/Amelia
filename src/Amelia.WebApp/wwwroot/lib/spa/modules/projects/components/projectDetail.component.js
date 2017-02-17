@@ -1,4 +1,3 @@
-/// <reference path="../../../../../typings/globals/es6-shim/index.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,30 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var data_service_1 = require('../../../core/services/data.service');
-var utility_service_1 = require('../../../core/services/utility.service');
+var router_1 = require('@angular/router');
+var project_service_1 = require('../services/project.service');
 var notification_service_1 = require('../../../core/services/notification.service');
-var membership_service_1 = require('../../../modules/account/services/membership.service');
 var ProjectDetailComponent = (function () {
-    function ProjectDetailComponent(projectService, utilityService, notificationService, membershipService) {
+    function ProjectDetailComponent(projectService, notificationService, route, router) {
         this.projectService = projectService;
-        this.utilityService = utilityService;
         this.notificationService = notificationService;
-        this.membershipService = membershipService;
+        this.route = route;
+        this.router = router;
     }
     ProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.projectService.getBySlug(params['slug']); })
-            .subscribe(function (project) { return _this.project = project; });
+        this.sub = this.route.params.subscribe(function (params) {
+            _this._projectSlug = params['slug'];
+            _this.getProject();
+        });
+    };
+    ProjectDetailComponent.prototype.getProject = function () {
+        var _this = this;
+        this.projectService.getBySlug(this._projectSlug)
+            .subscribe(function (res) {
+            var data = res.json();
+            _this._project = data;
+        }, function (error) {
+            _this.notificationService.printErrorMessage(error);
+        });
     };
     ProjectDetailComponent = __decorate([
         core_1.Component({
-            selector: 'am-project',
+            selector: 'project-Detail',
+            providers: [project_service_1.ProjectService, notification_service_1.NotificationService],
             templateUrl: './app/modules/projects/components/projectDetail.component.html'
         }), 
-        __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService, membership_service_1.MembershipService])
+        __metadata('design:paramtypes', [project_service_1.ProjectService, notification_service_1.NotificationService, router_1.ActivatedRoute, router_1.Router])
     ], ProjectDetailComponent);
     return ProjectDetailComponent;
 }());
 exports.ProjectDetailComponent = ProjectDetailComponent;
+;

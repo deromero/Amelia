@@ -6,6 +6,6 @@ var createProject_component_1 = require('./components/createProject.component');
 exports.projectRoutes = [
     { path: 'projects', component: projects_component_1.ProjectsComponent },
     { path: 'project/new', component: createProject_component_1.CreateProjectComponent },
-    { path: 'project/:slug', component: projectDetail_component_1.ProjectDetailComponent }
+    { path: 'project/:slug/show', component: projectDetail_component_1.ProjectDetailComponent }
 ];
 exports.projectRouting = router_1.RouterModule.forChild(exports.projectRoutes);

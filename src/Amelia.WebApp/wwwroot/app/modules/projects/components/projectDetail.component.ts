@@ -1,33 +1,43 @@
-/// <reference path="../../../../../typings/globals/es6-shim/index.d.ts" />
-
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../domain/project';
-import { Paginated } from '../../../core/common/paginated';
-import { DataService } from '../../../core/services/data.service';
-import { UtilityService } from '../../../core/services/utility.service';
+import { ProjectService } from '../services/project.service';
 import { NotificationService } from '../../../core/services/notification.service';
-import { MembershipService } from '../../../modules/account/services/membership.service';
-import { User } from '../../../modules/account/domain/user';
+import { UtilityService } from '../../../core/services/utility.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-    selector: 'am-project',
+    selector: 'project-Detail',
+    providers: [ProjectService, NotificationService],
     templateUrl: './app/modules/projects/components/projectDetail.component.html'
 })
 export class ProjectDetailComponent implements OnInit {
 
-    public project: Project;
+    private _project: Project;
+    private _projectSlug: string;
+    private sub: Subscription;
 
-    constructor(public projectService: DataService,
-        public utilityService: UtilityService,
+    constructor(public projectService: ProjectService,
         public notificationService: NotificationService,
-        public membershipService: MembershipService) { }
+        private route: ActivatedRoute,
+        private router: Router) { }
 
     ngOnInit(): void {
-        
-        this.route.params
-            .switchMap((params: Params) => this.projectService.getBySlug(params['slug']))
-            .subscribe(project => this.project = project);
+        this.sub = this.route.params.subscribe(params => {
+            this._projectSlug = params['slug'];
+            this.getProject();
+        });
+
     }
 
-}
+    getProject(): void {
+        this.projectService.getBySlug(this._projectSlug)
+            .subscribe(res => {
+                var data: any = res.json();
+                this._project = data;
+            }, error => {
+                this.notificationService.printErrorMessage(error);
+            });
+    }
+
+};
