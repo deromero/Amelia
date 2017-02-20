@@ -112,12 +112,10 @@ var AmeliaApp = function () {
 
     return {
         init: function () {
-            console.log('init');
             handleInit();
             handleOnResize();
 
             this.addResizeHandler(handleHeight);
-            console.log(resizeHandlers);
         },
 
         addResizeHandler: function (func) {

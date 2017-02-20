@@ -38,7 +38,6 @@ var Layout = function () {
                 }
             }
             content.css('min-height', height);
-            console.log(height);
         }
     };
 
@@ -166,6 +165,6 @@ var Layout = function () {
 
 $(document).ready(function () {
     Layout.init();
-    //Layout.fixContentHeight();
-    //Layout.initFixedSidebar();
+    Layout.fixContentHeight();
+    Layout.initFixedSidebar();
 });

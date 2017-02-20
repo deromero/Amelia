@@ -6,10 +6,12 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
 import { Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
 
 import { AccountModule } from './modules/account/account.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { ProjectModule } from './modules/projects/project.module';
+import { SettingsModule } from './modules/settings/settings.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home.component';
 import { routing } from './routes';
 
@@ -35,12 +37,14 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         HttpModule,
         routing,
         AccountModule,
+        SharedModule,
+        SettingsModule,
         ProjectModule
     ],
     declarations: [
         AppComponent, 
-        HeaderComponent,
-        HomeComponent
+        DashboardComponent,
+        HomeComponent       
         ],
     providers: [
         DataService, 

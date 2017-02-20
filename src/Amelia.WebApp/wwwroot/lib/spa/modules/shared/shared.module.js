@@ -11,36 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
-var data_service_1 = require('../../core/services/data.service');
-var project_service_1 = require('./services/project.service');
-var notification_service_1 = require('../../core/services/notification.service');
-var projects_component_1 = require('./components/projects.component');
-var projectDetail_component_1 = require('./components/projectDetail.component');
-var createProject_component_1 = require('./components/createProject.component');
+var breadcrumb_component_1 = require('./components/breadcrumb/breadcrumb.component');
+var header_component_1 = require('./components/header/header.component');
 var routes_1 = require('./routes');
-var ProjectModule = (function () {
-    function ProjectModule() {
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    ProjectModule = __decorate([
+    SharedModule = __decorate([
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                routes_1.projectRouting
+                routes_1.sharedRouting
             ],
             declarations: [
-                projects_component_1.ProjectsComponent,
-                projectDetail_component_1.ProjectDetailComponent,
-                createProject_component_1.CreateProjectComponent
+                breadcrumb_component_1.BreadcrumbComponent,
+                header_component_1.HeaderComponent
             ],
-            providers: [
-                data_service_1.DataService,
-                project_service_1.ProjectService,
-                notification_service_1.NotificationService
+            exports: [
+                breadcrumb_component_1.BreadcrumbComponent,
+                header_component_1.HeaderComponent
             ]
         }), 
         __metadata('design:paramtypes', [])
-    ], ProjectModule);
-    return ProjectModule;
+    ], SharedModule);
+    return SharedModule;
 }());
-exports.ProjectModule = ProjectModule;
+exports.SharedModule = SharedModule;

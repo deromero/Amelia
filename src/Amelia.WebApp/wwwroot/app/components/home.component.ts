@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
     constructor(public notificationService: NotificationService) {}
 
     ngOnInit(){
-        this.notificationService.printSuccessMessage("ingreso");
+        
     }
 }

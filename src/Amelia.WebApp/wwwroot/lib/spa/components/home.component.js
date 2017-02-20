@@ -15,7 +15,6 @@ var HomeComponent = (function () {
         this.notificationService = notificationService;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.notificationService.printSuccessMessage("ingreso");
     };
     HomeComponent = __decorate([
         core_1.Component({

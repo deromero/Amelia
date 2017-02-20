@@ -10,8 +10,6 @@ import { ProjectsComponent } from './components/projects.component';
 import { ProjectDetailComponent } from './components/projectDetail.component';
 import { CreateProjectComponent } from './components/createProject.component';
 
-import { SidebarComponent } from '../../components/sidebar/sidebar.component'
-
 import { projectRouting } from './routes';
 
 @NgModule({
@@ -21,7 +19,6 @@ import { projectRouting } from './routes';
         projectRouting
     ],
     declarations: [
-        SidebarComponent,
         ProjectsComponent,
         ProjectDetailComponent,
         CreateProjectComponent
