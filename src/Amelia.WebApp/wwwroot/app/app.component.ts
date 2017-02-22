@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
-import {enableProdMode} from '@angular/core';
+import { enableProdMode } from '@angular/core';
 
 enableProdMode();
 import { MembershipService } from './modules/account/services/membership.service';
@@ -23,9 +23,8 @@ export class AppComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router) { }
 
-    ngOnInit() {  
-        this.getCurrentRoute();
-     }
+    ngOnInit() {
+    }
 
     isUserLoggedIn(): boolean {
         return this.membershipService.isUserAuthenticated();
@@ -49,15 +48,5 @@ export class AppComponent implements OnInit {
             () => { });
     }
 
-    getCurrentRoute(): void{
-        this.router.events
-    .filter(event => event instanceof NavigationEnd)
-    .subscribe(event => {
-      let currentRoute = this.route.root;
-      while (currentRoute.children[0] !== undefined) {
-        currentRoute = currentRoute.children[0];
-      }
-      console.log(currentRoute.snapshot.data);
-    })
-    }
+    
 };

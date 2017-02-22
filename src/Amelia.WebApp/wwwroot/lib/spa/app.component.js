@@ -25,7 +25,6 @@ var AppComponent = (function () {
         this.router = router;
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.getCurrentRoute();
     };
     AppComponent.prototype.isUserLoggedIn = function () {
         return this.membershipService.isUserAuthenticated();
@@ -43,18 +42,6 @@ var AppComponent = (function () {
             .subscribe(function (res) {
             localStorage.removeItem('user');
         }, function (error) { return console.error('Error: ' + error); }, function () { });
-    };
-    AppComponent.prototype.getCurrentRoute = function () {
-        var _this = this;
-        this.router.events
-            .filter(function (event) { return event instanceof router_1.NavigationEnd; })
-            .subscribe(function (event) {
-            var currentRoute = _this.route.root;
-            while (currentRoute.children[0] !== undefined) {
-                currentRoute = currentRoute.children[0];
-            }
-            console.log(currentRoute.snapshot.data);
-        });
     };
     AppComponent = __decorate([
         core_1.Component({

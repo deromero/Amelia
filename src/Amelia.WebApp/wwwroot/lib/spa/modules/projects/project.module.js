@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
+var shared_module_1 = require('../../modules/shared/shared.module');
 var data_service_1 = require('../../core/services/data.service');
 var project_service_1 = require('./services/project.service');
 var notification_service_1 = require('../../core/services/notification.service');
@@ -26,7 +27,8 @@ var ProjectModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                routes_1.projectRouting
+                routes_1.projectRouting,
+                shared_module_1.SharedModule
             ],
             declarations: [
                 projects_component_1.ProjectsComponent,

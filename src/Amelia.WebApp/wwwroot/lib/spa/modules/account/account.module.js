@@ -14,6 +14,7 @@ var common_1 = require('@angular/common');
 var data_service_1 = require('../../core/services/data.service');
 var membership_service_1 = require('./services/membership.service');
 var notification_service_1 = require('../../core/services/notification.service');
+var shared_module_1 = require('../../modules/shared/shared.module');
 var account_component_1 = require('./components/account.component');
 var login_component_1 = require('./components/login.component');
 var register_component_1 = require('./components/register.component');
@@ -26,6 +27,7 @@ var AccountModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
+                shared_module_1.SharedModule,
                 routes_1.accountRouting
             ],
             declarations: [

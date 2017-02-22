@@ -1,39 +1,52 @@
-<h1 class="page-title">Projects</h1>
-
-<div class="container">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-md-9 col-sm-8">
-                <h1>
-                    My Projects
-                </h1>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <a [routerLink]="['/project/new']" class="btn btn-default  btn-block">
-                    <i class="fa fa-plus"></i> Create Project
+<am-breadcrumb></am-breadcrumb>
+<div class="row">
+    <div class="col-md-10 col-sm-9">
+        <div class="mt-element-list">
+            <div class="mt-list-head list-todo dark">
+                <div class="list-head-title-container">
+                    <h3 class="list-title">
+                        Projects
+                    </h3>
+                </div>
+                <a [routerLink]="['/project/new']">
+                    <div class="list-count pull-right red-mint">
+                        <i class="fa fa-plus"></i>
+                    </div>
                 </a>
+                <div class="list-head-count">
+                    <div class="list-head-count-item">
+                        Page {{_page + 1}} of {{_pagesCount}}
+                    </div>
+                </div>
+            </div>
+            <div class="mt-list-container list-news ext-1">
+                <ul>
+                    <li class="mt-list-item" *ngFor="let project of _projects">
+                        <div class="list-icon-container">
+                            <a [routerLink]="['/project',project.Slug,'show']">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                        <div class="list-thumb">
+                            <img src="lib/img/theme/portfolio/600x600/03.jpg" />
+                        </div>
+                        <div class="list-item-content">
+                            <h3 class="uppercase">
+                                <a [routerLink]="['/project',project.Slug,'show']">
+{{project.Name}}
+                                </a>
+                            </h3>
+                            <p>{{project.Description}}</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-10 col-sm-9">
-            <div class="list-group" *ngFor="let project of _projects">
-                <div class="list-group-item">
-                    <h4 class="list-group-item-header">
-                        <a [routerLink]="['/project',project.Slug,'show']">
-                        {{project.Name}}
-                        </a>
-                    </h4>
-                    <p class="list-group-item-text">{{project.Description}}</p>
-                </div>
-            </div>
-            <small>Page {{_page + 1}} of {{_pagesCount}}</small>
-        </div>
-        <div class="col-md-2 col-sm-3 hidden-xs">
-            <p>
-                List your projects to set in the top the most used ones. The top 10 projects will appear in the top navigation bar project
-                list
-            </p>
-        </div>
+    <div class="col-md-2 col-sm-3 hidden-xs">
+        <p>
+            List your projects to set in the top the most used ones. The top 10 projects will appear in the top navigation bar project
+            list
+        </p>
     </div>
 </div>

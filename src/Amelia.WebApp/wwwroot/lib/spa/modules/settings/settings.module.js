@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var common_1 = require('@angular/common');
+var shared_module_1 = require('../../modules/shared/shared.module');
 var settings_component_1 = require('./components/settings.component');
 var data_service_1 = require('../../core/services/data.service');
 var notification_service_1 = require('../../core/services/notification.service');
@@ -23,6 +24,7 @@ var SettingsModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
+                shared_module_1.SharedModule,
                 routes_1.settingsRouting
             ],
             declarations: [

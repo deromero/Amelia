@@ -34,7 +34,7 @@ var CreateProjectComponent = (function () {
         }, function (error) { return console.error('Error: ' + error); }, function () {
             if (result.Succeeded) {
                 _this.notificationService.printSuccessMessage(result.Message);
-                _this.router.navigate(['project', result.Value.Slug]);
+                _this.router.navigate(['project', result.Value.Slug, 'show']);
             }
             else {
                 _this.notificationService.printErrorMessage(result.Message);

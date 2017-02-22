@@ -1,11 +1,13 @@
-<div class="page-bar">
-    <ul class="page-breadcrumb">
+<div class="todo-main-header">
+    <h3>{{thisPage?.name}}</h3>
+    <ul class="todo-breadcrumb">
         <li>
-            <a href="">Home</a>
-            <i class="fa fa-circle"></i>
+            <a [routerLink]="['home']">Home</a>
         </li>
-        <li>
-            <span>Start</span>
+        <li *ngFor="let item of breadcrumbs">
+            <a [routerLink]="[item.url, item.params]"
+                [ngClass]="{'active': (item.name==thisPage.name)}"
+            >{{item.label}}</a>
         </li>
     </ul>
 </div>
