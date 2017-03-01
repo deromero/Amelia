@@ -21,7 +21,7 @@ export class ProjectsComponent extends Paginated implements OnInit {
     }
 
     ngOnInit() {
-        this.projectService.set(this._projectsAPI, 10);
+        this.projectService.set(this._projectsAPI, 6);
         this.getProjects();
     }
 
@@ -40,5 +40,10 @@ export class ProjectsComponent extends Paginated implements OnInit {
                     this.utilityService.navigateToSignIn();
                 }
             });
+    }
+
+    search(page):void{
+        super.search(page);
+        this.getProjects();
     }
 }

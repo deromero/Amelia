@@ -35,15 +35,11 @@ export class BreadcrumbComponent implements OnInit {
 
     ngOnInit() {
         this.getCurrentRoute();
-
-
         this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
             //set breadcrumbs
             let root: ActivatedRoute = this.route.root;
             this.breadcrumbs = this.getBreadcrumbs(root);
         });
-
-        console.log(this.breadcrumbs);
     }
 
 

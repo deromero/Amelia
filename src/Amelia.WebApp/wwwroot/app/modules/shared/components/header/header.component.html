@@ -23,11 +23,6 @@
                         <i class="icon-grid"></i> Projects
                     </a>
                 </li>
-                <li class="classic-menu-dropdown" [routerLinkActive]="['active']">
-                    <a [routerLink]="['/settings']" class="dropdown-toggle" >
-                        <i class="icon-settings"></i> Settings
-                    </a>
-                </li>
             </ul>
         </div>
         <div class="top-menu">
@@ -46,6 +41,11 @@
                             <a [routerLink]="['/home']" (click)="logout()"><i class="icon-key"></i>Logout</a>
                         </li>
                     </ul>
+                </li>
+                <li class="dropdown classic-menu-dropdown" *ngIf="isUserLoggedIn()" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/settings']" class="dropdown-toggle" >
+                        <i class="icon-settings"></i>
+                    </a>
                 </li>
             </ul>
         </div>

@@ -28,7 +28,7 @@ var ProjectsComponent = (function (_super) {
         this._projectsAPI = 'api/projects/';
     }
     ProjectsComponent.prototype.ngOnInit = function () {
-        this.projectService.set(this._projectsAPI, 10);
+        this.projectService.set(this._projectsAPI, 6);
         this.getProjects();
     };
     ProjectsComponent.prototype.getProjects = function () {
@@ -46,6 +46,10 @@ var ProjectsComponent = (function (_super) {
                 _this.utilityService.navigateToSignIn();
             }
         });
+    };
+    ProjectsComponent.prototype.search = function (page) {
+        _super.prototype.search.call(this, page);
+        this.getProjects();
     };
     ProjectsComponent = __decorate([
         core_1.Component({

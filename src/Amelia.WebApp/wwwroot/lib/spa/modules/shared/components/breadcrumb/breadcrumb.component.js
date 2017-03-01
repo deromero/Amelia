@@ -33,7 +33,6 @@ var BreadcrumbComponent = (function () {
             var root = _this.route.root;
             _this.breadcrumbs = _this.getBreadcrumbs(root);
         });
-        console.log(this.breadcrumbs);
     };
     BreadcrumbComponent.prototype.getBreadcrumbs = function (route, url, breadcrumbs) {
         if (url === void 0) { url = ""; }

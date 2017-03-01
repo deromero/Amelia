@@ -1,5 +1,14 @@
 @charset "UTF-8";
 /* Cubic Bezier Transition */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.portlet-full-height {
+  height: 100%; }
+
 .page-logo a {
   color: #c6cfda;
   /* padding: 15px 0 0 5px;*/
@@ -43,3 +52,15 @@
       .todo-main-header > .todo-breadcrumb > li:first-child:before {
         content: "";
         margin: 0; }
+
+.project-portlet {
+  height: 200px; }
+  .project-portlet .project-title {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important; }
+    .project-portlet .project-title .project-caption {
+      margin-bottom: 0px !important;
+      padding-bottom: 0px !important; }
+  .project-portlet .project-description {
+    margin-top: 0px !important;
+    font-size: 11px; }
