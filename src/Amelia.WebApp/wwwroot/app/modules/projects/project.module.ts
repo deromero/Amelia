@@ -7,6 +7,7 @@ import { SharedModule } from '../../modules/shared/shared.module';
 import { DataService } from '../../core/services/data.service';
 import { ProjectService } from './services/project.service';
 import { NotificationService } from '../../core/services/notification.service';
+import { UtilityService } from '../../core/services/utility.service';
 
 import { ProjectsComponent } from './components/projects.component';
 import { ProjectDetailComponent } from './components/projectDetail.component';
@@ -29,7 +30,8 @@ import { projectRouting } from './routes';
     providers :[
         DataService,
         ProjectService,
-        NotificationService
+        NotificationService,
+        UtilityService
     ]
 })
 export class ProjectModule { }

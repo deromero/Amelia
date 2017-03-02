@@ -27,6 +27,8 @@ export class ProjectsComponent extends Paginated implements OnInit {
     }
 
     getProjects(): void {
+
+
         this.projectService.get(this._page)
             .subscribe(res => {
                 var data: any = res.json();
@@ -41,9 +43,11 @@ export class ProjectsComponent extends Paginated implements OnInit {
                     this.utilityService.navigateToSignIn();
                 }
             });
+
+        
     }
 
-    search(page):void{
+    search(page): void {
         super.search(page);
         this.getProjects();
     }

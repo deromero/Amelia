@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 
@@ -22,4 +23,6 @@ export class UtilityService {
     navigateToSignIn() {
         this.navigate('/account/login');
     }
+
+
 }

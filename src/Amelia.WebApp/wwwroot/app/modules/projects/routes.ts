@@ -8,8 +8,8 @@ import { CreateProjectComponent } from './components/createProject.component';
 export const projectRoutes: Routes = [
 
     { path: 'projects', component: ProjectsComponent, data: { name: 'Projects' } },
-    { path: 'project/new', component: CreateProjectComponent, data: { name: 'Create a New Project' } },
-    { path: 'project/:slug/show', component: ProjectDetailComponent, data: { name: 'Project Details' } }
+    { path: 'projects/new', component: CreateProjectComponent, data: { name: 'Create a New Project' } },
+    { path: 'projects/:slug/show', component: ProjectDetailComponent, data: { name: 'Project Details' } }
 
 ]
 export const projectRouting:

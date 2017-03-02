@@ -15,6 +15,7 @@ var shared_module_1 = require('../../modules/shared/shared.module');
 var data_service_1 = require('../../core/services/data.service');
 var project_service_1 = require('./services/project.service');
 var notification_service_1 = require('../../core/services/notification.service');
+var utility_service_1 = require('../../core/services/utility.service');
 var projects_component_1 = require('./components/projects.component');
 var projectDetail_component_1 = require('./components/projectDetail.component');
 var createProject_component_1 = require('./components/createProject.component');
@@ -38,7 +39,8 @@ var ProjectModule = (function () {
             providers: [
                 data_service_1.DataService,
                 project_service_1.ProjectService,
-                notification_service_1.NotificationService
+                notification_service_1.NotificationService,
+                utility_service_1.UtilityService
             ]
         }), 
         __metadata('design:paramtypes', [])
