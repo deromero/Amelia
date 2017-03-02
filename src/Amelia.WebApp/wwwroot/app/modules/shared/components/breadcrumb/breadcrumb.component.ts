@@ -20,6 +20,7 @@ interface IBreadcrumb {
 @Component({
     selector: 'am-breadcrumb',
     templateUrl: './app/modules/shared/components/breadcrumb/breadcrumb.component.html'
+    
 })
 export class BreadcrumbComponent implements OnInit {
 
@@ -87,6 +88,8 @@ export class BreadcrumbComponent implements OnInit {
                 }
                 this.thisPage = currentRoute.snapshot.data;
             })
+
+            
     };
 
 }

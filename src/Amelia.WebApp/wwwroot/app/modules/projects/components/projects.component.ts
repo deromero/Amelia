@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+
 import { Project } from '../domain/project';
 import { Paginated } from '../../../core/common/paginated';
 import { DataService } from '../../../core/services/data.service';
@@ -21,7 +22,7 @@ export class ProjectsComponent extends Paginated implements OnInit {
     }
 
     ngOnInit() {
-        this.projectService.set(this._projectsAPI, 6);
+        this.projectService.set(this._projectsAPI, 8);
         this.getProjects();
     }
 
