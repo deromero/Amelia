@@ -55,6 +55,12 @@ namespace Amelia.WebApp.Controllers
                     var totalProjects = _projectService.GetAll().Count();
                     var projectViewModels = Mapper.Map<IEnumerable<Project>, IEnumerable<ProjectViewModel>>(projects);
 
+                    foreach (var item in projectViewModels)
+                    {
+                        item.IssueCount = projects.Single(x=>x.Id == item.Id).Tasks.Count();
+                    }
+
+
                     pagedSet = new PaginationSet<ProjectViewModel>()
                     {
                         Page = currentPage,

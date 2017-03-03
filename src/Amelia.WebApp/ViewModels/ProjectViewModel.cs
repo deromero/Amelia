@@ -16,6 +16,6 @@ namespace Amelia.WebApp.ViewModels
 
         public string OnwerName{get;set;}
         public int OwnerId{get;set;}
-
+        public int IssueCount { get; set; }
     }
 }
