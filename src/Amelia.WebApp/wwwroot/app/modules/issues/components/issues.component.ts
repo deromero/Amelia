@@ -8,10 +8,10 @@ import { UtilityService } from '../../../core/services/utility.service';
 import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
-    selector: 'board',
-    templateUrl: './app/modules/board/components/board.component.html'
+    selector: 'issues',
+    templateUrl: './app/modules/issues/components/issues.component.html'
 })
-export class BoardComponent implements OnInit {
+export class IssuesComponent implements OnInit {
 
     constructor(public projectService: DataService,
         public utilityService: UtilityService,

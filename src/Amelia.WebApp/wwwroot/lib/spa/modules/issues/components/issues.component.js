@@ -12,21 +12,21 @@ var core_1 = require('@angular/core');
 var data_service_1 = require('../../../core/services/data.service');
 var utility_service_1 = require('../../../core/services/utility.service');
 var notification_service_1 = require('../../../core/services/notification.service');
-var BoardComponent = (function () {
-    function BoardComponent(projectService, utilityService, notificationService) {
+var IssuesComponent = (function () {
+    function IssuesComponent(projectService, utilityService, notificationService) {
         this.projectService = projectService;
         this.utilityService = utilityService;
         this.notificationService = notificationService;
     }
-    BoardComponent.prototype.ngOnInit = function () {
+    IssuesComponent.prototype.ngOnInit = function () {
     };
-    BoardComponent = __decorate([
+    IssuesComponent = __decorate([
         core_1.Component({
-            selector: 'board',
-            templateUrl: './app/modules/board/components/board.component.html'
+            selector: 'issues',
+            templateUrl: './app/modules/issues/components/issues.component.html'
         }), 
         __metadata('design:paramtypes', [data_service_1.DataService, utility_service_1.UtilityService, notification_service_1.NotificationService])
-    ], BoardComponent);
-    return BoardComponent;
+    ], IssuesComponent);
+    return IssuesComponent;
 }());
-exports.BoardComponent = BoardComponent;
+exports.IssuesComponent = IssuesComponent;

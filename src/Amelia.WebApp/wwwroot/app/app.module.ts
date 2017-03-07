@@ -10,6 +10,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { ProjectModule } from './modules/projects/project.module';
 import { BacklogModule } from './modules/backlog/backlog.module';
 import { BoardModule } from './modules/board/board.module';
+import { IssuesModule } from './modules/issues/issues.module';
 import { SettingsModule } from './modules/settings/settings.module';
 
 import { AppComponent } from './app.component';
@@ -43,7 +44,8 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         SettingsModule,
         ProjectModule,
         BacklogModule,
-        BoardModule
+        BoardModule,
+        IssuesModule
     ],
     declarations: [
         AppComponent, 
