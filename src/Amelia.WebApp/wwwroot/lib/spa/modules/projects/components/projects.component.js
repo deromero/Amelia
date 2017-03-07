@@ -26,6 +26,7 @@ var ProjectsComponent = (function (_super) {
         this.utilityService = utilityService;
         this.notificationService = notificationService;
         this._projectsAPI = 'api/projects/';
+        this._isEmpty = true;
     }
     ProjectsComponent.prototype.ngOnInit = function () {
         this.projectService.set(this._projectsAPI, 8);
@@ -40,6 +41,7 @@ var ProjectsComponent = (function (_super) {
             _this._page = data.Page;
             _this._pagesCount = data.TotalPages;
             _this._totalCount = data.TotalCount;
+            _this._isEmpty = _this._totalCount <= 0;
         }, function (error) {
             if (error.status == 401 || error.status == 404) {
                 _this.notificationService.printErrorMessage("Authentication required");

@@ -12,11 +12,12 @@ import { UtilityService } from '../../core/services/utility.service';
 import { ProjectsComponent } from './components/projects.component';
 import { ProjectDetailComponent } from './components/projectDetail.component';
 import { CreateProjectComponent } from './components/createProject.component';
+import { SidebarComponent } from './components/sidebar.component';
 
 import { projectRouting } from './routes';
 
 @NgModule({
-    imports:[
+    imports: [
         CommonModule,
         FormsModule,
         projectRouting,
@@ -25,13 +26,17 @@ import { projectRouting } from './routes';
     declarations: [
         ProjectsComponent,
         ProjectDetailComponent,
-        CreateProjectComponent
+        CreateProjectComponent,
+        SidebarComponent
     ],
-    providers :[
+    providers: [
         DataService,
         ProjectService,
         NotificationService,
         UtilityService
+    ],
+    exports: [
+        SidebarComponent
     ]
 })
 export class ProjectModule { }

@@ -14,6 +14,7 @@ import { NotificationService } from '../../../core/services/notification.service
 export class ProjectsComponent extends Paginated implements OnInit {
     private _projectsAPI: string = 'api/projects/';
     private _projects: Array<Project>;
+    private _isEmpty: boolean = true;
 
     constructor(public projectService: DataService,
         public utilityService: UtilityService,
@@ -36,6 +37,9 @@ export class ProjectsComponent extends Paginated implements OnInit {
                 this._page = data.Page;
                 this._pagesCount = data.TotalPages;
                 this._totalCount = data.TotalCount;
+
+                this._isEmpty = this._totalCount <= 0; 
+
             },
             error => {
                 if (error.status == 401 || error.status == 404) {

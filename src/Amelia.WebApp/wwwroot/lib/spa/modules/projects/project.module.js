@@ -19,6 +19,7 @@ var utility_service_1 = require('../../core/services/utility.service');
 var projects_component_1 = require('./components/projects.component');
 var projectDetail_component_1 = require('./components/projectDetail.component');
 var createProject_component_1 = require('./components/createProject.component');
+var sidebar_component_1 = require('./components/sidebar.component');
 var routes_1 = require('./routes');
 var ProjectModule = (function () {
     function ProjectModule() {
@@ -34,13 +35,17 @@ var ProjectModule = (function () {
             declarations: [
                 projects_component_1.ProjectsComponent,
                 projectDetail_component_1.ProjectDetailComponent,
-                createProject_component_1.CreateProjectComponent
+                createProject_component_1.CreateProjectComponent,
+                sidebar_component_1.SidebarComponent
             ],
             providers: [
                 data_service_1.DataService,
                 project_service_1.ProjectService,
                 notification_service_1.NotificationService,
                 utility_service_1.UtilityService
+            ],
+            exports: [
+                sidebar_component_1.SidebarComponent
             ]
         }), 
         __metadata('design:paramtypes', [])

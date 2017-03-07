@@ -34,7 +34,7 @@ export class CreateProjectComponent implements OnInit {
             () => {
                 if (result.Succeeded) {
                     this.notificationService.printSuccessMessage(result.Message);
-                    this.router.navigate(['project',result.Value.Slug,'show']);
+                    this.router.navigate(['projects',result.Value.Slug,'show']);
                 }
                 else {
                     this.notificationService.printErrorMessage(result.Message);

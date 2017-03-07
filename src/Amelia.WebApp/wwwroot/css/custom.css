@@ -64,3 +64,12 @@
   .project-portlet .project-description {
     margin-top: 0px !important;
     font-size: 11px; }
+
+.form-buttons {
+  margin-left: -22px;
+  padding-left: 22px;
+  margin-right: -22px;
+  padding-right: 22px;
+  margin-bottom: -20px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
