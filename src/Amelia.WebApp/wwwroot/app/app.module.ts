@@ -11,6 +11,8 @@ import { ProjectModule } from './modules/projects/project.module';
 import { BacklogModule } from './modules/backlog/backlog.module';
 import { BoardModule } from './modules/board/board.module';
 import { IssuesModule } from './modules/issues/issues.module';
+import { TeamModule } from './modules/team/team.module';
+import { AdminModule } from './modules/admin/admin.module';
 import { SettingsModule } from './modules/settings/settings.module';
 
 import { AppComponent } from './app.component';
@@ -45,7 +47,9 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         ProjectModule,
         BacklogModule,
         BoardModule,
-        IssuesModule
+        IssuesModule,
+        TeamModule,
+        AdminModule
     ],
     declarations: [
         AppComponent, 

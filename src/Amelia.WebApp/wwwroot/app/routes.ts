@@ -8,6 +8,8 @@ import { projectRoutes, projectRouting } from './modules/projects/routes';
 import { backlogRoutes, backlogRouting } from './modules/backlog/routes';
 import { boardRoutes, boardRouting } from './modules/board/routes';
 import { issuesRoutes, issuesRouting } from './modules/issues/routes';
+import { teamRoutes, teamRouting } from './modules/team/routes';
+import { adminRoutes, adminRouting } from './modules/admin/routes';
 import { settingsRoutes, settingsRouting } from './modules/settings/routes';
 import { sharedRoutes, sharedRouting } from './modules/shared/routes';
 

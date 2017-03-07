@@ -25,6 +25,8 @@ var project_module_1 = require('./modules/projects/project.module');
 var backlog_module_1 = require('./modules/backlog/backlog.module');
 var board_module_1 = require('./modules/board/board.module');
 var issues_module_1 = require('./modules/issues/issues.module');
+var team_module_1 = require('./modules/team/team.module');
+var admin_module_1 = require('./modules/admin/admin.module');
 var settings_module_1 = require('./modules/settings/settings.module');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./components/dashboard/dashboard.component');
@@ -60,7 +62,9 @@ var AppModule = (function () {
                 project_module_1.ProjectModule,
                 backlog_module_1.BacklogModule,
                 board_module_1.BoardModule,
-                issues_module_1.IssuesModule
+                issues_module_1.IssuesModule,
+                team_module_1.TeamModule,
+                admin_module_1.AdminModule
             ],
             declarations: [
                 app_component_1.AppComponent,
