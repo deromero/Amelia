@@ -8,6 +8,7 @@ import { Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
 import { AccountModule } from './modules/account/account.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { ProjectModule } from './modules/projects/project.module';
+import { BacklogModule } from './modules/backlog/backlog.module';
 import { SettingsModule } from './modules/settings/settings.module';
 
 import { AppComponent } from './app.component';
@@ -39,7 +40,8 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         AccountModule,
         SharedModule,
         SettingsModule,
-        ProjectModule
+        ProjectModule,
+        BacklogModule
     ],
     declarations: [
         AppComponent, 

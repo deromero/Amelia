@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { accountRoutes, accountRouting } from './modules/account/routes';
+import { backlogRoutes, backlogRouting } from './modules/backlog/routes';
 import { projectRoutes, projectRouting } from './modules/projects/routes';
 import { settingsRoutes, settingsRouting } from './modules/settings/routes';
 import { sharedRoutes, sharedRouting } from './modules/shared/routes';

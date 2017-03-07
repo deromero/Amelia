@@ -9,20 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var data_service_1 = require('./data.service');
+var data_service_1 = require('../../../core/services/data.service');
 var ProjectService = (function () {
     function ProjectService(dataService) {
         this.dataService = dataService;
         this._projectCreateAPI = 'api/projects/create';
+        this._projectGetBySlugAPI = 'api/projects/get';
     }
     ProjectService.prototype.create = function (newProject) {
         this.dataService.set(this._projectCreateAPI);
         return this.dataService.post(JSON.stringify(newProject));
     };
+    ProjectService.prototype.getBySlug = function (slug) {
+        this.dataService.set(this._projectGetBySlugAPI);
+        return this.dataService.getSingle(slug);
+    };
     ProjectService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [data_service_1.DataService])
+        __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object])
     ], ProjectService);
     return ProjectService;
+    var _a;
 }());
 exports.ProjectService = ProjectService;

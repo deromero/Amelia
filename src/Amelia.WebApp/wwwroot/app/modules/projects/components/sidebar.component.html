@@ -3,37 +3,37 @@
         <div class="page-sidebar navbar-collapse collapse">
             <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed" style="padding-top:50px">
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'show']">
                         <i class="icon-drawer"></i>
-                        <span class="title">Timeline ({{_hasProject}})</span>
+                        <span class="title">Timeline</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'backlog']">
                         <i class="icon-layers"></i>
                         <span class="title">Backlog</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'board']">
                         <i class="icon-screen-tablet"></i>
                         <span class="title">Board</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'issues']">
                         <i class="icon-list"></i>
                         <span class="title">Issues</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'team']">
                         <i class="icon-user"></i>
                         <span class="title">Team</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a [routerLink]="['/projects',_project.Slug,'admin']">
                         <i class="icon-settings"></i>
                         <span class="title">Admin</span>
                     </a>

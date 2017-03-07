@@ -22,6 +22,7 @@ var http_2 = require('@angular/http');
 var account_module_1 = require('./modules/account/account.module');
 var shared_module_1 = require('./modules/shared/shared.module');
 var project_module_1 = require('./modules/projects/project.module');
+var backlog_module_1 = require('./modules/backlog/backlog.module');
 var settings_module_1 = require('./modules/settings/settings.module');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./components/dashboard/dashboard.component');
@@ -54,7 +55,8 @@ var AppModule = (function () {
                 account_module_1.AccountModule,
                 shared_module_1.SharedModule,
                 settings_module_1.SettingsModule,
-                project_module_1.ProjectModule
+                project_module_1.ProjectModule,
+                backlog_module_1.BacklogModule
             ],
             declarations: [
                 app_component_1.AppComponent,
