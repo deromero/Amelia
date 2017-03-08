@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
         this.membershipService.logout()
             .subscribe(res => {
                 localStorage.removeItem('user');
+        
             },
             error => console.error('Error: ' + error),
             () => { });

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Amelia.Domain.Common;
 using Amelia.Domain.Contracts.Services;
 using Amelia.Domain.Models;
 using Amelia.WebApp.Models;
@@ -14,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Amelia.WebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class ProjectsController : Controller
+    public class ProjectsController : AmeliaBaseController
     {
         private readonly IProjectService _projectService;
         private readonly IUserService _userService;

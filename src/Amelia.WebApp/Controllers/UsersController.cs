@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Amelia.WebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class UsersController : AmeliaBaseController
     {
         private IUserService _userService;
 

@@ -40,12 +40,14 @@ namespace Amelia.WebApp.Controllers
                 MembershipContext _userContext = _membershipService.ValidateUser(user.Username, user.Password);
                 if (_userContext.User != null)
                 {
-                    var roles = _userService.GetUserRoles(user.Username);
                     var claims = new List<Claim>();
+                    claims.Add(new Claim(ClaimTypes.Name, _userContext.User.Username));
+                    claims.Add(new Claim(ClaimTypes.Email, _userContext.User.Email));
+
+                    var roles = _userService.GetUserRoles(user.Username);
                     foreach (var role in roles)
                     {
-                        var claim = new Claim(ClaimTypes.Role, "Admin", ClaimValueTypes.String, user.Username);
-                        claims.Add(claim);
+                        claims.Add(new Claim(ClaimTypes.Role, "Admin", ClaimValueTypes.String, user.Username));
                     }
 
                     await HttpContext.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
@@ -55,7 +57,8 @@ namespace Amelia.WebApp.Controllers
                     authenticationResult = new GenericResult
                     {
                         Succeeded = true,
-                        Message = "Authentication Succeeded"
+                        Message = "Authentication Succeeded",
+                        ReturnValue = _userContext.User
                     };
                 }
                 else
@@ -133,7 +136,7 @@ namespace Amelia.WebApp.Controllers
                     {
                         Succeeded = false,
                         Message = "Invalid fields."
-                  };
+                    };
                 }
             }
             catch (Exception ex)
