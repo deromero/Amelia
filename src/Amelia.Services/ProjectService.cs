@@ -11,10 +11,14 @@ namespace Amelia.Services
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
+        private IProjectRoleRepository _projectRoleRepository;
 
-        public ProjectService(IProjectRepository projectRepository)
+        public ProjectService(
+            IProjectRepository projectRepository,
+            IProjectRoleRepository projectRoleRepository)
         {
             _projectRepository = projectRepository;
+            _projectRoleRepository = projectRoleRepository;
         }
 
         public IEnumerable<Project> GetAll()
@@ -31,9 +35,15 @@ namespace Amelia.Services
                 project.CreatedOn = DateTime.Now;
                 project.UpdatedOn = DateTime.Now;
                 project.Status = (short)ProjectStatus.Draft;
-
                 _projectRepository.Add(project);
                 _projectRepository.Commit();
+
+                
+
+                if(project.Owner != null){
+                    
+                }
+
 
                 var confirmation = ActionConfirmation.CreateSuccess(project.Name + " Created");
                 confirmation.Value = project;

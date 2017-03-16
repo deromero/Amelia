@@ -15,9 +15,11 @@ require('rxjs/add/operator/map');
 var core_2 = require('@angular/core');
 core_2.enableProdMode();
 var membership_service_1 = require('../../../../modules/account/services/membership.service');
+var utility_service_1 = require('../../../../core/services/utility.service');
 var HeaderComponent = (function () {
-    function HeaderComponent(membershipService, location) {
+    function HeaderComponent(membershipService, utilityService, location) {
         this.membershipService = membershipService;
+        this.utilityService = utilityService;
         this.location = location;
     }
     HeaderComponent.prototype.ngOnInit = function () { };
@@ -33,9 +35,11 @@ var HeaderComponent = (function () {
             return 'Login';
     };
     HeaderComponent.prototype.logout = function () {
+        var _this = this;
         this.membershipService.logout()
             .subscribe(function (res) {
             localStorage.removeItem('user');
+            _this.utilityService.navigateToHome();
         }, function (error) { return console.error('Error: ' + error); }, function () { });
     };
     HeaderComponent = __decorate([
@@ -43,7 +47,7 @@ var HeaderComponent = (function () {
             selector: 'am-header',
             templateUrl: './app/modules/shared/components/header/header.component.html'
         }), 
-        __metadata('design:paramtypes', [membership_service_1.MembershipService, common_1.Location])
+        __metadata('design:paramtypes', [membership_service_1.MembershipService, utility_service_1.UtilityService, common_1.Location])
     ], HeaderComponent);
     return HeaderComponent;
 }());

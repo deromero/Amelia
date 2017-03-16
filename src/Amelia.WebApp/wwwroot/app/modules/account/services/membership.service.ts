@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DataService } from '../../../core/services/data.service';
 import { Registration } from '../domain/registration';
 import { User } from '../domain/user';
+import { UserView } from '../domain/userView';
 
 @Injectable()
 export class MembershipService {
@@ -31,21 +32,21 @@ export class MembershipService {
     }
 
     isUserAuthenticated(): boolean {
-        var _user: any = localStorage.getItem('user');
+        var _user: any = localStorage.getItem('userView');
         if (_user != null)
             return true;
         else
             return false;
     }
 
-    getLoggedInUser(): User {
-        var _user: User;
+    getLoggedInUser(): UserView {
+        var userView: UserView;
 
         if (this.isUserAuthenticated()) {
-            var _userData = JSON.parse(localStorage.getItem('user'));
-            _user = new User(_userData.Username, _userData.Password);
+            var _userData = JSON.parse(localStorage.getItem('userView'));
+            _userData = new UserView(_userData.Id,_userData.Username, _userData.Password);
         }
 
-        return _user;
+        return _userData;
     }
 }

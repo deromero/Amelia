@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../domain/user';
+import { UserView } from '../domain/userView';
 import { OperationResult } from '../../../core/domain/operationResult';
 import { MembershipService } from '../services/membership.service';
 import { NotificationService } from '../../../core/services/notification.service';
@@ -11,6 +12,7 @@ import { NotificationService } from '../../../core/services/notification.service
 })
 export class LoginComponent implements OnInit {
     private _user: User;
+    private _userView: any;
 
     constructor(public membershipService: MembershipService,
                 public notificationService: NotificationService,
@@ -27,12 +29,13 @@ export class LoginComponent implements OnInit {
             .subscribe(res => {
                 _authenticationResult.Succeeded = res.Succeeded;
                 _authenticationResult.Message = res.Message;
+                this._userView = res.ReturnValue;
             },
             error => console.error('Error: ' + error),
             () => {
                 if (_authenticationResult.Succeeded) {
                     this.notificationService.printSuccessMessage('Welcome back ' + this._user.Username + '!');
-                    localStorage.setItem('user', JSON.stringify(this._user));
+                    localStorage.setItem('userView',JSON.stringify(this._userView));
                     this.router.navigate(['home']);
                 }
                 else {

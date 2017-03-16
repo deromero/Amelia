@@ -24,5 +24,8 @@ export class UtilityService {
         this.navigate('/account/login');
     }
 
+    navigateToHome(){
+        this.navigate('/home');
+    }
 
 }

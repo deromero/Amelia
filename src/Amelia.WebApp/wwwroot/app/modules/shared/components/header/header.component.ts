@@ -8,6 +8,8 @@ import { enableProdMode } from '@angular/core';
 enableProdMode();
 import { MembershipService } from '../../../../modules/account/services/membership.service';
 import { User } from '../../../../modules/account/domain/user';
+import { UtilityService } from '../../../../core/services/utility.service';
+
 
 @Component({
     selector: 'am-header',
@@ -16,6 +18,7 @@ import { User } from '../../../../modules/account/domain/user';
 export class HeaderComponent implements OnInit {
 
     constructor(public membershipService: MembershipService,
+        public utilityService: UtilityService,
         public location: Location) { }
 
     ngOnInit() { }
@@ -37,7 +40,7 @@ export class HeaderComponent implements OnInit {
         this.membershipService.logout()
             .subscribe(res => {
                 localStorage.removeItem('user');
-        
+                this.utilityService.navigateToHome();
             },
             error => console.error('Error: ' + error),
             () => { });

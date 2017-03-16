@@ -1,0 +1,63 @@
+<div id="edit_project_tab" class="tab-pane fade active in">
+    <h3>Edit Project</h3>
+    <div class="note note-info">
+        <p>
+            Use the form to edit project.
+        </p>
+    </div>
+
+    <h4>Choose a template</h4>
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="radio">
+                <label>
+                        <input type="radio" value="1" required
+                            [(ngModel)]="_projectForm.ProjectType" name="projectType" #projectType="ngModel"  />
+                            SCRUM
+                        </label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="radio">
+                <label>
+                        <input type="radio" value="2" required
+                            [(ngModel)]="_projectForm.ProjectType" name="projectType" #projectType="ngModel"  />
+                            KANBAN
+                        </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<h4>Project details</h4>
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="_projectForm.Name" name="name" #name="ngModel" required
+    />
+</div>
+<div class="form-group">
+    <textarea placeholder="Description" [(ngModel)]="_projectForm.Description" name="description" #description="ngModel" cols="30"
+        rows="10" class="form-control"></textarea>
+</div>
+<div class="form-group">
+    <div class="mt-checkbox-inline">
+        <label class="mt-checkbox mt-checkbox-outline">
+            <input type="checkbox" 
+            [(ngModel)]="_projectForm.IsPrivate" 
+            #isPrivate="ngModel" name="isPrivate" />
+            Is Private?
+            <span></span>
+            </label>
+    </div>
+</div>
+<div class="form-buttons bg-grey-steel" >
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary" 
+            (click)="create()" [disabled]="!_projectForm?.form?.valid">
+            Create Project</button>
+        <a [routerLink]="['/projects']" 
+            class="btn btn-default">Cancel</a>
+    </div>
+
+</div>
+</div>

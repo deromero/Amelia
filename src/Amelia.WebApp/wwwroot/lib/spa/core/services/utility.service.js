@@ -24,6 +24,9 @@ var UtilityService = (function () {
     UtilityService.prototype.navigateToSignIn = function () {
         this.navigate('/account/login');
     };
+    UtilityService.prototype.navigateToHome = function () {
+        this.navigate('/home');
+    };
     UtilityService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [router_1.Router])

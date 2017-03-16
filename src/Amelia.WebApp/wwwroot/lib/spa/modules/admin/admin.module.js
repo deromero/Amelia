@@ -17,6 +17,8 @@ var project_service_1 = require('../../modules/projects/services/project.service
 var notification_service_1 = require('../../core/services/notification.service');
 var utility_service_1 = require('../../core/services/utility.service');
 var admin_component_1 = require('./components/admin.component');
+var adminBar_component_1 = require('./components/adminBar.component');
+var edit_component_1 = require('./components/project/edit.component');
 var routes_1 = require('./routes');
 var AdminModule = (function () {
     function AdminModule() {
@@ -30,7 +32,9 @@ var AdminModule = (function () {
                 shared_module_1.SharedModule
             ],
             declarations: [
-                admin_component_1.AdminComponent
+                admin_component_1.AdminComponent,
+                adminBar_component_1.AdminBarComponent,
+                edit_component_1.EditComponent
             ],
             providers: [
                 data_service_1.DataService,

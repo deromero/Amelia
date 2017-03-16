@@ -21,11 +21,13 @@ namespace Amelia.Domain.Models
         public virtual IEnumerable<Role> Roles{get;set;}
         public virtual IEnumerable<Task> Tasks{get;set;}
     
+        public virtual IEnumerable<Member> Members{get;set;}
 
         public Project(){
             Modules = new List<Module>();
             Roles = new List<Role>();
             Tasks = new List<Task>();
+            Members = new List<Member>();
         }
 
     }

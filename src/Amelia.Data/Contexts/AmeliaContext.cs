@@ -72,7 +72,7 @@ namespace Amelia.Data.Contexts
 
             modelBuilder.Entity<Module>().ToTable("Modules");
             modelBuilder.Entity<ProjectRole>().ToTable("ProjectRoles");
-            modelBuilder.Entity<Member>().ToTable("Members");
+            modelBuilder.Entity<Member>().ToTable("ProjectMembers");
 
         }
 

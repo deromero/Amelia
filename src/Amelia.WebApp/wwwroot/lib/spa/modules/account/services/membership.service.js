@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var data_service_1 = require('../../../core/services/data.service');
-var user_1 = require('../domain/user');
+var userView_1 = require('../domain/userView');
 var MembershipService = (function () {
     function MembershipService(accountService) {
         this.accountService = accountService;
@@ -31,19 +31,19 @@ var MembershipService = (function () {
         return this.accountService.post(null, false);
     };
     MembershipService.prototype.isUserAuthenticated = function () {
-        var _user = localStorage.getItem('user');
+        var _user = localStorage.getItem('userView');
         if (_user != null)
             return true;
         else
             return false;
     };
     MembershipService.prototype.getLoggedInUser = function () {
-        var _user;
+        var userView;
         if (this.isUserAuthenticated()) {
-            var _userData = JSON.parse(localStorage.getItem('user'));
-            _user = new user_1.User(_userData.Username, _userData.Password);
+            var _userData = JSON.parse(localStorage.getItem('userView'));
+            _userData = new userView_1.UserView(_userData.Id, _userData.Username, _userData.Password);
         }
-        return _user;
+        return _userData;
     };
     MembershipService = __decorate([
         core_1.Injectable(), 

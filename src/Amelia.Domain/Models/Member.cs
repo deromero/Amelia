@@ -5,6 +5,7 @@ namespace Amelia.Domain.Models
         public int Id {get;set;}
         public bool IsActive{get;set;}
         public bool IsAdmin{get;set;}
+        public Project Project{get;set;}
         public User User{get;set;}
         public ProjectRole Role{get;set;}
     }

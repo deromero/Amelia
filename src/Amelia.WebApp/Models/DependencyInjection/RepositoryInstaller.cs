@@ -18,6 +18,7 @@ namespace Amelia.WebApp.Models.DependencyInjection
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectRoleRepository, ProjectRoleRepository>();
         }
 
         private static void AddCustomRepositoriesTo(IServiceCollection services)

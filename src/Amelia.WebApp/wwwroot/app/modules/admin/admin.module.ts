@@ -10,6 +10,8 @@ import { NotificationService } from '../../core/services/notification.service';
 import { UtilityService } from '../../core/services/utility.service';
 
 import { AdminComponent } from './components/admin.component';
+import { AdminBarComponent } from './components/adminBar.component';
+import { EditComponent } from './components/project/edit.component';
 
 import { adminRouting } from './routes';
 
@@ -21,7 +23,9 @@ import { adminRouting } from './routes';
         SharedModule
     ],
     declarations: [
-        AdminComponent
+        AdminComponent,
+        AdminBarComponent,
+        EditComponent
     ],
     providers: [
         DataService,

@@ -54,11 +54,18 @@ namespace Amelia.WebApp.Controllers
                        new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)),
                        new Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties { IsPersistent = user.RememberMe });
 
+                    var userView = new
+                    {
+                        Id = _userContext.User.Id,
+                        Username = _userContext.User.Username,
+                        Email = _userContext.User.Email
+                    };
+
                     authenticationResult = new GenericResult
                     {
                         Succeeded = true,
                         Message = "Authentication Succeeded",
-                        ReturnValue = _userContext.User
+                        ReturnValue = userView
                     };
                 }
                 else

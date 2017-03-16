@@ -30,10 +30,11 @@ var LoginComponent = (function () {
             .subscribe(function (res) {
             _authenticationResult.Succeeded = res.Succeeded;
             _authenticationResult.Message = res.Message;
+            _this._userView = res.ReturnValue;
         }, function (error) { return console.error('Error: ' + error); }, function () {
             if (_authenticationResult.Succeeded) {
                 _this.notificationService.printSuccessMessage('Welcome back ' + _this._user.Username + '!');
-                localStorage.setItem('user', JSON.stringify(_this._user));
+                localStorage.setItem('userView', JSON.stringify(_this._userView));
                 _this.router.navigate(['home']);
             }
             else {
