@@ -10,6 +10,7 @@ import { NotificationService } from '../../core/services/notification.service';
 import { UtilityService } from '../../core/services/utility.service';
 
 import { IssuesComponent } from './components/issues.component';
+import { IssueService } from './services/issue.service';
 
 import { issuesRouting } from './routes';
 
@@ -27,7 +28,8 @@ import { issuesRouting } from './routes';
         DataService,
         ProjectService,
         NotificationService,
-        UtilityService
+        UtilityService,
+        IssueService
     ]
 })
 export class IssuesModule { }

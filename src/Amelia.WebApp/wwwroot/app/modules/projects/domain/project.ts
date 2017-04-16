@@ -12,7 +12,7 @@ export class Project {
     OwnerName: string;
     OwnerId: number;
 
-
+ 
     constructor(id: number,
         name: string,
         description: string,

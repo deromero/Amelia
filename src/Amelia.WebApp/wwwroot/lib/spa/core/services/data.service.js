@@ -23,6 +23,11 @@ var DataService = (function () {
         return this.http.get(uri)
             .map(function (response) { return (response); });
     };
+    DataService.prototype.getByParent = function (id, page) {
+        var uri = this._baseUri + id.toString() + '/' + page.toString() + '/' + this._pageSize.toString();
+        return this.http.get(uri)
+            .map(function (response) { return (response); });
+    };
     DataService.prototype.getSingle = function (id) {
         var uri = this._baseUri + '/' + id;
         return this.http.get(uri)

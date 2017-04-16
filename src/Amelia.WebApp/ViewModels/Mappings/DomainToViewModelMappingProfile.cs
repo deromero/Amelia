@@ -1,3 +1,4 @@
+using System;
 using Amelia.Domain.Models;
 using AutoMapper;
 
@@ -9,6 +10,12 @@ namespace Amelia.WebApp.ViewModels.Mappings
         {
             MapUserToUserViewModel();
             MapProjectToProjectViewModel();
+            MapTaskToTaskViewModel();
+        }
+
+        private void MapTaskToTaskViewModel()
+        {
+            Mapper.CreateMap<Task,TaskViewModel>();
         }
 
         private void MapProjectToProjectViewModel()

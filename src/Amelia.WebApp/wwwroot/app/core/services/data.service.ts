@@ -24,6 +24,13 @@ export class DataService {
             .map(response => (<Response>response));
     }
 
+    getByParent(id:any, page: number){
+        var uri = this._baseUri + id.toString() + '/' + page.toString() + '/' + this._pageSize.toString();
+
+        return this.http.get(uri)
+            .map(response => (<Response> response));
+    }
+
     getSingle(id:any){
         var uri = this._baseUri+'/'+id;
         return this.http.get(uri)

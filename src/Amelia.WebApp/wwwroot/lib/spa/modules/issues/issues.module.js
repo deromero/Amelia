@@ -17,6 +17,7 @@ var project_service_1 = require('../../modules/projects/services/project.service
 var notification_service_1 = require('../../core/services/notification.service');
 var utility_service_1 = require('../../core/services/utility.service');
 var issues_component_1 = require('./components/issues.component');
+var issue_service_1 = require('./services/issue.service');
 var routes_1 = require('./routes');
 var IssuesModule = (function () {
     function IssuesModule() {
@@ -36,7 +37,8 @@ var IssuesModule = (function () {
                 data_service_1.DataService,
                 project_service_1.ProjectService,
                 notification_service_1.NotificationService,
-                utility_service_1.UtilityService
+                utility_service_1.UtilityService,
+                issue_service_1.IssueService
             ]
         }), 
         __metadata('design:paramtypes', [])

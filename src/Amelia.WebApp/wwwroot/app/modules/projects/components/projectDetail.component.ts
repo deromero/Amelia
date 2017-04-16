@@ -27,7 +27,6 @@ export class ProjectDetailComponent implements OnInit {
             this._projectSlug = params['slug'];
             this.getProject();
         });
-
     }
 
     getProject(): void {
