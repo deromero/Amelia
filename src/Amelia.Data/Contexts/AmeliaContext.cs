@@ -76,6 +76,11 @@ namespace Amelia.Data.Contexts
 
         }
 
+        private void CreateModelSprints(ModelBuilder modelBuilder){
+            modelBuilder.Entity<Sprint>().ToTable("Sprints")
+            .HasOne(t=>t.Project);
+        }
+
         private void CreateModelTasks(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Task>().ToTable("Tasks");
