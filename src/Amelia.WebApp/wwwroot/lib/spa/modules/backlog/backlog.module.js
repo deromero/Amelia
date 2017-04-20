@@ -14,9 +14,11 @@ var common_1 = require('@angular/common');
 var shared_module_1 = require('../../modules/shared/shared.module');
 var data_service_1 = require('../../core/services/data.service');
 var project_service_1 = require('../../modules/projects/services/project.service');
+var sprint_service_1 = require('./services/sprint.service');
 var notification_service_1 = require('../../core/services/notification.service');
 var utility_service_1 = require('../../core/services/utility.service');
 var backlog_component_1 = require('./components/backlog.component');
+var sprints_component_1 = require('./components/sprints.component');
 var routes_1 = require('./routes');
 var BacklogModule = (function () {
     function BacklogModule() {
@@ -30,11 +32,13 @@ var BacklogModule = (function () {
                 shared_module_1.SharedModule
             ],
             declarations: [
-                backlog_component_1.BacklogComponent
+                backlog_component_1.BacklogComponent,
+                sprints_component_1.SprintsComponent
             ],
             providers: [
                 data_service_1.DataService,
                 project_service_1.ProjectService,
+                sprint_service_1.SprintService,
                 notification_service_1.NotificationService,
                 utility_service_1.UtilityService
             ]

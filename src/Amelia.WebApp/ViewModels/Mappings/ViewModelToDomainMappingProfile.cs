@@ -12,6 +12,12 @@ namespace Amelia.WebApp.ViewModels.Mappings
             MapUserViewModelToUser();
             MapProjectViewModelToProject();
             MapTaskViewModelToTask();
+            MapSprintViewModelToSprint();
+        }
+
+        private void MapSprintViewModelToSprint()
+        {
+            Mapper.CreateMap<SprintViewModel, Sprint>();
         }
 
         private void MapTaskViewModelToTask()

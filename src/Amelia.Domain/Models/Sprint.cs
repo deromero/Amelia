@@ -12,7 +12,7 @@ namespace Amelia.Domain.Models
         public DateTime DueDate{get;set;}
         public DateTime CreatedOn{get;set;}
         public DateTime UpdatedOn{get;set;}
-        public Project Project{get;set;}
+        public Project Project{get;set;} 
 
         public virtual IEnumerable<Task> Tasks{get;set;}
     }

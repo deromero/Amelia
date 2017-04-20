@@ -1,16 +1,25 @@
 <div class="row">
-    <div class="col-md-6 col-lg-4">
-        <am-breadcrumb></am-breadcrumb>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <am-breadcrumb></am-breadcrumb>
+            </div>
+            <div class="col-md-6 col-lg-8">
+
+            </div>
+        </div>
+        <div class="all-container">
+            <div class="note note-info">
+                <h4>Backlog</h4>
+                <p>
+                    create sprints and admin the items of the backlog
+                </p>
+            </div>
+            <p>{{_project?.Name}}</p>
+        </div>
     </div>
-    <div class="col-md-6 col-lg-8">
-        
+    <div class="col-md-2">
+        <sprints [project]="_project"></sprints>
+        {{_project?.Id}}
     </div>
 </div>
-
-<div class="note note-info" >
-    <h4>Backlog</h4>
-    <p>
-    create sprints and admin the items of the backlog
-    </p>
-</div>
-
