@@ -16,7 +16,6 @@ using Amelia.Data.Initializer;
 using System.Security.Claims;
 using Amelia.WebApp.Models.DependencyInjection;
 
-[assembly: UserSecretsId("aspnet-TestApp-ce345b64-19cf-4972-b34f-d16f2e7976ed")]
 namespace Amelia.WebApp
 {
     public class Startup

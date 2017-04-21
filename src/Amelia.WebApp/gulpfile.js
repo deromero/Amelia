@@ -6,7 +6,10 @@ var gulp = require('gulp'),
     del = require('del'),
     path = require('path');
  
-eval("var project = " + fs.readFileSync("./project.json"));
+//eval("var project = " + fs.readFileSync("./project.json"));
+var project = {
+    webroot: 'wwwroot'
+};
 var lib = "./" + project.webroot + "/lib/";
  
 var paths = {
